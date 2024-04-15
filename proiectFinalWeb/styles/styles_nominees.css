@@ -1,0 +1,173 @@
+
+
+/*GENERAL*/
+h1{
+  font-size: 2.5vw;
+  color: goldenrod ;
+
+}
+h2{
+  font-size: 1.5vw;
+
+}
+
+h3{
+  font-size: 1vw;
+  font-style: italic;
+  color: rgb(172, 166, 166);
+  margin-bottom:3%;
+}
+hr{
+  margin-bottom: 3%;
+}
+a{
+  text-decoration: none;
+}
+
+body{
+    margin:0;
+    padding:0;
+    background-image: linear-gradient(to top, rgb(255, 255, 255) 30%, rgba(255, 255, 255, 0) 100%), url('../photos/half_page_background.jpg');
+    background-position: center;
+    background-size:cover;
+    background-repeat: no-repeat;
+  }
+
+
+
+  /*TOP_BODY*/
+
+    .top_body select{
+     
+        font-size: 1.5vw;
+        padding: 10px 20px;
+        border-radius: 30px;
+        background-color: #5f5a59e3;
+        border: 2px solid goldenrod;
+        color: #FFFFFF;
+        margin: 3% 0 0 30%;
+
+    }
+      
+     .top_body select:focus{
+        outline:none;
+      }
+      .top_body select:hover{
+        opacity: 0.8;
+      }
+
+    .SearchButton{
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+        border-radius: 30px;
+        background-color: #5f5a59e3;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 1.5vw;
+        padding: 10px 20px 10px 20px;
+        width: auto;
+        transition: all 0.5s;
+        cursor: pointer;
+        border: 2px solid goldenrod;
+    
+    }
+    
+    .SearchButton span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+    
+    .SearchButton span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+    }
+    
+    .SearchButton:hover span {
+        padding-right: 25px;
+    }
+    
+    .SearchButton:hover span:after {
+        opacity: 1;
+        right: 0;
+    }
+    
+
+    /*BOTTOM_BODY -> NOMINEES*/
+
+
+   .nominee{
+        display: flex;
+        justify-content:space-between;
+        align-items: center;
+        height: 100%; /* Ajustează înălțimea la nevoie */
+        padding: 3%;
+        margin:5% 10%;
+        background-color: #424040cc;
+        border-radius: 10px;
+       
+    }
+
+    .image {
+        flex: 1;
+        position: relative;
+        color: white;
+        display: inline-block;
+        margin-left:3%;
+        margin-right:3%;
+        height: 100%;
+       
+
+      }
+    .image img{
+        height: 100%;
+        border-radius: 20px;
+        border: 2px solid goldenrod;
+        
+    }
+     h1:hover {
+        opacity: 0.7;
+       
+      }
+
+    .nomTitle{
+        position: absolute;
+        transform: translate(-50%, -50%); 
+        background-color:rgba(0, 0, 0, 0.522);
+        font-family: Arial, sans-serif;
+        color: #fff; 
+        width: 100%;
+        font-size:2vw; 
+        text-align: center; 
+        margin:-15% 0 0 50%;
+    
+    }
+      
+    .text {
+        flex: 1;
+        color: #ddd;
+        font-family: Arial, sans-serif;
+    }
+ 
+
+    @media (max-width: 700px) {
+      .nominee {
+        flex-wrap: wrap;
+      }
+    
+      .text,
+      .image {
+        flex: 100%;
+      }
+
+
+    }
+
