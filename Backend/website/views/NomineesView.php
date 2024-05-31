@@ -63,7 +63,11 @@ foreach ($categories as $category => $nomineesInCategory):
                         ?>
                         <div class="actor">
                             <h2>RECIPIENT</h2>
-                            <a href="actor.html"><h1><?= htmlspecialchars($nominee['First Name']) . ' ' . htmlspecialchars($nominee['Last Name']) ?></h1></a>
+                            <?php
+                                $actorName = $nominee['First Name'] . ' ' . $nominee['Last Name'];
+                                $actor=$actors->getActorByName($actorName);
+                            ?>
+                            <a href="Actor.php?id=<?= urlencode($actor['id']) ?>"><h1><?= htmlspecialchars($nominee['First Name']) . ' ' . htmlspecialchars($nominee['Last Name']) ?></h1></a>
                             <h3><?= htmlspecialchars($nominee['Project']) ?></h3>
                         </div>
                         <hr>
@@ -78,7 +82,11 @@ foreach ($categories as $category => $nomineesInCategory):
                     if ($nominee['Award'] !== 'YES' && $nonWinnersCount < 4): // Afisăm doar non-câștigătorii și maxim 4
                         ?>
                         <div class="actor">
-                            <h2><?= htmlspecialchars($nominee['First Name']) . ' ' . htmlspecialchars($nominee['Last Name']) ?></h2>
+                            <?php
+                                $actorName = $nominee['First Name'] . ' ' . $nominee['Last Name'];
+                                $actor=$actors->getActorByName($actorName);
+                            ?>
+                             <a href="Actor.php?id=<?= urlencode($actor['id']) ?>"><h2><?= htmlspecialchars($nominee['First Name']) . ' ' . htmlspecialchars($nominee['Last Name']) ?></h2></a>
                             <h3><?= htmlspecialchars($nominee['Project']) ?></h3>
                         </div>
                         <?php

@@ -71,6 +71,12 @@ class Router {
                     } else {
                         $controller->getActors();
                     }
+                }elseif($controllerName === 'MoviesController'){
+                    if (!empty($segments[1]) && is_numeric($segments[1])) {
+                        $controller->getMoviesByActorId($segments[1]);
+                    } else {
+                        $controller->getMovies();
+                    }
                 }else {
                     // Handle 405 Method Not Allowed for other controllers
                     http_response_code(405);
