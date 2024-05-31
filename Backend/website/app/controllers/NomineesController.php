@@ -19,11 +19,30 @@ class NomineesController{
             // Send response with status code 200
             http_response_code(200);
             echo json_encode($nominee);
+
+            // Include the view
+          
+            
             return;
         }
         // Send response with status code 404 if user not found
         http_response_code(404);
         echo '404 Not Found';
+    }
+
+    public function getNomineesByYear($year){
+        /// Send response with status code 200
+        
+        http_response_code(200);
+        //echo json_encode($this->nomineeModel->getNomineesByYear($year));
+        $nominees = $this->nomineeModel->getNomineesByYear($year);
+        //echo $nominees;
+        ob_start();
+         include BASE_PATH . '/views/NomineesView.php';
+         $nomineesHTML = ob_get_clean();
+          echo json_encode(array(
+             'nomineesHTML' => $nomineesHTML
+         ));
     }
 
     public function createNominee(){

@@ -31,6 +31,8 @@ function getPersonsInfo($page) {
 }
 
 function searchActorByName($actorName, $totalPages) {
+    
+    set_time_limit(300);
     // Parcurge fiecare pagină de rezultate
     for ($page = 1; $page <= $totalPages; $page++) {
         // Obține informațiile despre persoanele de pe pagina curentă
@@ -46,7 +48,7 @@ function searchActorByName($actorName, $totalPages) {
         }
     }
 
-    // Dacă nu s-a găsit actorul în nicio pagină, returnează null sau poți gestiona cum dorești
+    // Dacă nu s-a găsit actorul în nicio pagină, returnează null
     return null;
 }
 
@@ -58,30 +60,7 @@ function displayImage($posterPath) {
     $imageUrl = $baseImageUrl . $posterPath;
 
     // Afisează imaginea folosind eticheta <img>
-    echo "<img src='$imageUrl' alt='Movie Poster'>";
+    echo "<img src='$imageUrl' alt='Actor Profile Picture'>";
 }
-
-
-
-// Exemplu de utilizare:
-$actorName = "Florence Pugh"; // Numele actorului căutat
-$personsInfo = getPersonsInfo(1);
-$totalPages = $personsInfo['total_pages'];
-$actorInfo = searchActorByName($actorName, $totalPages);
-
-if ($actorInfo) {
-    // Dacă s-a găsit actorul, afișează informațiile despre acesta
-    print_r($actorInfo);
-} else {
-    // Dacă nu s-a găsit actorul, afișează un mesaj corespunzător
-    echo "Nu s-a găsit niciun actor cu numele '$actorName'.";
-}
-
-
-// Exemplu de utilizare:
-$posterPath = $actorInfo['profile_path']; // Poster path-ul din datele obținute de la API
-
-// Afișează imaginea
-displayImage($posterPath);
 
 ?>

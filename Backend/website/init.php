@@ -12,7 +12,11 @@ spl_autoload_register(function ($class) {
     $directories = [
         BASE_PATH . '/app/controllers/',
         BASE_PATH . '/app/models/',
-        BASE_PATH . '/mash-rest/',
+        //BASE_PATH . '/mash-rest/',
+        BASE_PATH . '/views/',
+        BASE_PATH . '/views/styles',
+        BASE_PATH . '/views/photos',
+       // BASE_PATH . '/views/html',
         BASE_PATH . '/public/',
         BASE_PATH . '/app/',
         // Add more directories as needed

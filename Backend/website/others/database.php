@@ -1,5 +1,5 @@
 <?php
-include_once __DIR__ . '/config/config.php';
+/*include_once __DIR__ . '/config/config.php';
 
 class Database extends mysqli {
     function __construct() {
@@ -81,5 +81,5 @@ class Database extends mysqli {
         return $stmt->execute();
     }
 }
-
+*/
 ?>

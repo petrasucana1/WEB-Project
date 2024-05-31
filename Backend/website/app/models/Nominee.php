@@ -1,5 +1,9 @@
 <?php
 
+require_once(dirname(__DIR__) . '../config/config.php');
+
+require_once(dirname(__DIR__) . '../Db.php');
+
 class Nominee extends DB{
 
     function getAllNominees() {
@@ -22,6 +26,20 @@ class Nominee extends DB{
             $stmt->execute();
             $nominee = $stmt->fetch(PDO::FETCH_ASSOC);
             return $nominee;
+        } catch (PDOException $e) {
+            echo "Error fetching nominee: " . $e->getMessage();
+            return null;
+        }
+    }
+
+    function getNomineesByYear($year) {
+        try {
+            $sql = "SELECT * FROM nominees WHERE year = :year";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':year', $year, PDO::PARAM_INT);
+            $stmt->execute();
+            $nominees= $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $nominees;
         } catch (PDOException $e) {
             echo "Error fetching nominee: " . $e->getMessage();
             return null;
