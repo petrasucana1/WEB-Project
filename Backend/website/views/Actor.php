@@ -1,6 +1,7 @@
 <?php
 include_once '../app/models/Actor.php';
 include_once '../app/models/Movie.php';
+include ("html/navbar.html");
 
 $actorId = isset($_GET['id']) ? $_GET['id'] : '';
 
@@ -39,32 +40,6 @@ if ($actorId) {
     <link rel="stylesheet" href="styles/styles_nav_footer.css">
 </head>
 <body>
-<header>
-    <div class="logo">
-        <a href="../home.html"><img src="../photos/logo.png.png" alt="logo_nav_bar"></a>
-    </div>
-    <div class="hamburger">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-    </div>
-    <div class="nav-bar">
-        <ul>
-            <li>
-                <a href="nominees.html">Nominees</a>
-            </li>
-            <li>
-                <a href="news.html">News</a>
-            </li>  
-            <li>
-                <a href="search.html">Search</a>
-            </li>
-            <li>
-                <a href="../home.html">Home</a>
-            </li>
-        </ul>
-    </div>
-</header>
 <div class="top_body">
     <div class="left_side">
         <img src="<?= $imageUrl ?>" class="image" alt="actor-photo">
@@ -97,16 +72,8 @@ if ($actorId) {
         <button class="scroll-button scroll-right">&#8250;</button>
     </div>
 </div>
-<footer>
-    <div class="footer-left">
-        <img src="../photos/mini_logo.png" alt="Logo">
-    </div>
-    <a class="admin" href="login.html">Admin Login</a>
-    <div class="footer-right">
-        <a href="https://www.facebook.com"><img src="../photos/facebook-icon.png" alt="Facebook"></a>
-        <a href="https://www.instagram.com"><img src="../photos/instagram-icon.png" alt="Instagram"></a>
-        <a href="https://www.tiktok.com"><img src="../photos/tiktok-icon.png" alt="TikTok"></a>
-    </div>
-</footer>
 </body>
 </html>
+<?php
+    include ("html/footer.html");
+    ?>

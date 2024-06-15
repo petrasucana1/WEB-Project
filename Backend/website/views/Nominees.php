@@ -70,3 +70,6 @@
     };
 </script>
 </html>
+<?php
+    include ("html/footer.html");
+?>

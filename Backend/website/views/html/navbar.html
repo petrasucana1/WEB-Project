@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>NavBar</title>
     <link rel="stylesheet" href="../styles/styles_nav_footer.css">
 </head>
 <body>
@@ -19,16 +19,24 @@
     <div class="nav-bar">
         <ul>
             <li>
-                <a href="nominees.html" class="active">Nominees</a>
+                <a href="../views/Nominees.php">Nominees</a> 
             </li>
             <li>
-                <a href="news.html">News</a>
+                <a href="../views/News.php">News</a>
             </li>  
             <li>
-                <a href="search.html">Search</a>
+                <a href="../views/Search.php">Search</a>
+            </li>
+            <li class="dropdown">
+                <a>Statistics</a>
+                <div class="dropdown-content">
+                    <a href="../views/StatisticsAge.php">Age statistic</a>
+                    <a href="../views/StatisticsMovies.php">Movies statistic</a>
+                    <a href="../views/StatisticsPopularity.php">Popularity statistic</a>
+                </div>
             </li>
             <li>
-                <a href="../home.html">Home</a>
+                <a href="../views/Home.php">Home</a>
             </li>
         </ul>
     </div>
