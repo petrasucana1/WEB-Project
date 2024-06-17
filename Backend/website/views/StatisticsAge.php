@@ -1,5 +1,5 @@
 <?php
-include ("html/navbar.html");
+include ("components/navbar.html");
 
 include_once '../app/models/Actor.php';
 $actor = new Actor();
@@ -55,7 +55,6 @@ $after2012Percentage = round(($after2012Count / $totalActors) * 100, 2);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Distribuție în generații</title>
-    <link rel="stylesheet" href="styles/styles_nav_footer.css">
     <script src="https://www.gstatic.com/charts/loader.js"></script>
     <style>
         /* Stiluri CSS pentru a face graficul responsive */
@@ -155,5 +154,5 @@ $after2012Percentage = round(($after2012Count / $totalActors) * 100, 2);
 </body>
 </html>
 <?php
-    include ("html/footer.html");
+    include ("components/footer.html");
 ?>

@@ -1,0 +1,192 @@
+/* Stilurile pentru admin.html */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar {
+    width: 200px; /* Am redus lățimea sidebar-ului */
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #424040cc; 
+    padding: 20px;
+    color: #fff;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.sidebar h1 {
+    color: #f39c12; 
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.button {
+    margin-bottom: 10px;
+    padding: 10px 0;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.2); 
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 5px; 
+}
+
+.button:hover {
+    background-color: goldenrod;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
+}
+
+
+.content {
+    margin-left: 220px; /* Am ajustat marginea pentru a ține cont de lățimea redusă a sidebar-ului */
+    padding: 20px;
+    background-color: #ecf0f1; 
+    min-height: 100vh;
+    transition: margin-left 0.3s; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+.container {
+    margin-left: 230px; 
+    padding: 20px;
+}
+
+.admin-table {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    text-align: left; 
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Stiluri pentru formularul de adăugare a unui admin */
+.add-admin-container {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px; 
+    justify-content: center;
+}
+
+input {
+    padding: 8px;
+    border: 4px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 20%; 
+    text-align: left; 
+}
+
+/* Stiluri pentru butonul "Add Admin" */
+.add-admin-button {
+    background-color: goldenrod;
+    color: white;
+    padding: 8px 15px; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 14px; 
+}
+
+.add-admin-button:hover {
+    background-color: #787c78;
+}
+
+/* Stiluri pentru butoanele "Modify" */
+.modify-button {
+    background-color: goldenrod;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.modify-button:hover {
+    background-color: rgb(146, 115, 37);
+}
+
+/* Stiluri pentru butoanele "Delete" */
+.delete-button {
+    background-color:  rgb(79, 74, 61);
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+    background-color: #cc0000;
+}
+
+/* Stiluri pentru caseta modală */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.608);
+}
+.modal input{
+   width:70%;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 5px solid goldenrod;
+    width: 40%; 
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

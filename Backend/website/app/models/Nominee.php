@@ -116,6 +116,34 @@ class Nominee extends DB{
             return false;
         }
     }
+
+    function importCSV($file) {
+        try {
+            $handle = fopen($file, "r");
+
+            $sql = "INSERT INTO nominees (`First Name`, `Last Name`, `Category`, `Project`, `Year`, `Show`, `Award`) VALUES (?,?,?,?,?,?,?)";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute();
+
+            while (($data = fgetcsv($handle)) !== FALSE) {
+                // Bind parametrii 
+                $types = str_repeat("s", count($data)); 
+                $stmt->bindParam($types, ...$data);
+                $result = $stmt->execute();
+            }
+            if ($stmt->rowCount() > 0) {
+                return true; // Nominee updated successfully
+            } else {
+                return false; // Nominee not found
+            }
+            fclose($handle);
+
+        } catch (PDOException $e) {
+            echo "Error deleting user: " . $e->getMessage();
+            return false;
+        }
+    }
+        
 }
 
 ?>

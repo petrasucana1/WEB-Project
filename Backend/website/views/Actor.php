@@ -1,7 +1,7 @@
 <?php
 include_once '../app/models/Actor.php';
 include_once '../app/models/Movie.php';
-include ("html/navbar.html");
+include ("components/navbar.html");
 
 $actorId = isset($_GET['id']) ? $_GET['id'] : '';
 
@@ -37,7 +37,6 @@ if ($actorId) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $name ?></title>
     <link rel="stylesheet" href="styles/styles_actor.css">
-    <link rel="stylesheet" href="styles/styles_nav_footer.css">
 </head>
 <body>
 <div class="top_body">
@@ -75,5 +74,5 @@ if ($actorId) {
 </body>
 </html>
 <?php
-    include ("html/footer.html");
+    include ("components/footer.html");
     ?>

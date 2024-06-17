@@ -20,33 +20,35 @@
         <h1>Admin List</h1>
         <div class="admin-table">
             <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+               
                 <tbody id="admin-list">
                     <!-- Aici vei afișa lista de admini -->
                 </tbody>
             </table>
         </div>
-        <!-- Formular pentru adăugarea unui admin -->
-        <div class="add-admin-container">
-            <input type="text" id="new-admin-id" placeholder="ID" disabled>
-            <input type="text" id="new-admin-username" placeholder="Enter username">
-            <input type="email" id="new-admin-email" placeholder="Enter email">
-            <button class="add-admin-button" onclick="addAdmin()">Add Admin</button>
-        </div>
+        
+
+        <tr class="add-admin-container">
+            <form method="POST" action="">
+                <td></td>
+                <td><input type="email" id="new-admin-email" name="email" required  placeholder="Enter email"></td>
+                <td><input type="password"  id="new-admin-password" name="password" required placeholder="Enter password"></td>
+                <td><button type="submit" class="add-admin-button" >Add Admin</button></td>
+            </form>
+        </tr>
+
     </div>
     <script>
         let adminId = 1; // ID-ul următorului admin adăugat
 
         function addAdmin() {
-            const usernameInput = document.getElementById('new-admin-username');
             const emailInput = document.getElementById('new-admin-email');
+            const passwordInput = document.getElementById('new-admin-password');
             const username = usernameInput.value.trim();
             const email = emailInput.value.trim();
 

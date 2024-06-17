@@ -1,5 +1,5 @@
 <?php
-include ("html/navbar.html");
+include ("components/navbar.html");
 include_once '../app/models/Actor.php';
 $actor = new Actor();
 $actors = $actor->getTop10Actors(); // Presupunând că această metodă returnează un array de actori cu numărul lor și popularitatea
@@ -20,8 +20,6 @@ foreach ($actors as $top_actor) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grafic Bară Responsive cu Butoane</title>
-    <link rel="stylesheet" href="styles/styles_nav_footer.css">
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
@@ -116,5 +114,5 @@ foreach ($actors as $top_actor) {
 </body>
 </html>
 <?php
-    include ("html/footer.html");
+    include ("components/footer.html");
 ?>

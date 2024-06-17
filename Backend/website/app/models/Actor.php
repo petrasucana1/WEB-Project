@@ -83,6 +83,43 @@ class Actor extends DB{
             return null;
         }
     }
+    public function addActor($data) {
+        try {
+            $sql = "INSERT INTO actors (`name`, `gender`, `popularity`, `profile_path`, `known_for_departament`, `biography`, `place_of_birth`, `birthday`) 
+                    VALUES (:nname, :gender, :popularity, :picture_url, :departament, :bio, :birth_place, :birthday)";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':nname', $data['name'], PDO::PARAM_STR);
+            $stmt->bindParam(':gender', $data['gender'], PDO::PARAM_INT);
+            $stmt->bindParam(':popularity', $data['popularity'], PDO::PARAM_INT);
+            $stmt->bindParam(':picture_url', $data['picture_url'], PDO::PARAM_STR);
+            $stmt->bindParam(':departament', $data['departament'], PDO::PARAM_STR);
+            $stmt->bindParam(':bio', $data['bio'], PDO::PARAM_STR);
+            $stmt->bindParam(':birth_place', $data['birth_place'], PDO::PARAM_STR);
+            $stmt->bindParam(':birthday', $data['birthday'], PDO::PARAM_STR);
+            $stmt->execute();
+            return ['message' => 'Actor created successfully'];
+        } catch (PDOException $e) {
+            return ['error' => 'Error adding actor: ' . $e->getMessage()];
+        }
+    }
+
+    function deleteActor($id) {
+        try {
+            $sql = "DELETE FROM actors WHERE id = :id";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+
+            if($stmt->rowCount() > 0) {
+                return true; 
+            } else {
+                return false; 
+            }
+        } catch (PDOException $e) {
+            echo "Error deleting actor: " . $e->getMessage();
+            return false;
+        }
+    }
 }
 
 ?>

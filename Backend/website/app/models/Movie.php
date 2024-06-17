@@ -30,5 +30,40 @@ class Movie extends DB{
             return null;
         }
     }
+
+    public function addMovie($data) {
+        try {
+            $sql = "INSERT INTO movies (`actor_id`, `title`, `release_date`, `vote_average`, `poster_path`) 
+                    VALUES (:actor_id, :title, :release_date, :vote_average, :poster_path)";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':actor_id', $data['actor_id'], PDO::PARAM_INT);
+            $stmt->bindParam(':title', $data['title'], PDO::PARAM_STR);
+            $stmt->bindParam(':release_date', $data['release_date'], PDO::PARAM_STR);
+            $stmt->bindParam(':vote_average', $data['vote_average'], PDO::PARAM_INT);
+            $stmt->bindParam(':poster_path', $data['poster_path'], PDO::PARAM_STR);
+            $stmt->execute();
+            return ['message' => 'Movie created successfully'];
+        } catch (PDOException $e) {
+            return ['error' => 'Error adding movie: ' . $e->getMessage()];
+        }
+    }
+
+    function deleteMovie($id) {
+        try {
+            $sql = "DELETE FROM movies WHERE id = :id";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+
+            if($stmt->rowCount() > 0) {
+                return true; 
+            } else {
+                return false; 
+            }
+        } catch (PDOException $e) {
+            echo "Error deleting movie: " . $e->getMessage();
+            return false;
+        }
+    }
 }
 ?>

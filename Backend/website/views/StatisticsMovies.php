@@ -1,5 +1,5 @@
 <?php
-include ("html/navbar.html");
+include ("components/navbar.html");
 include_once '../app/models/Actor.php';
 include_once '../app/models/Movie.php';
 
@@ -28,7 +28,6 @@ foreach ($actorsData as $actor) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Actor Movies Chart</title>
-  <link rel="stylesheet" href="styles/styles_nav_footer.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -100,5 +99,5 @@ foreach ($actorsData as $actor) {
 </body>
 </html>
 <?php
-    include ("html/footer.html");
+    include ("components/footer.html");
 ?>

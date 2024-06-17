@@ -1,5 +1,5 @@
 <?php
-    include ("html/navbar.html");
+    include ("components/navbar.html");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search</title>
     <link rel="stylesheet" href="styles/styles_search.css">
-    <link rel="stylesheet" href="styles/styles_nav_footer.css">
 </head>
 <body>
  
@@ -61,5 +60,5 @@
 </body>
 </html>
 <?php
-    include ("html/footer.html");
+    include ("components/footer.html");
 ?>

@@ -1,0 +1,97 @@
+/* Stilurile pentru admin.html */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar {
+    width: 200px; /* Am redus lățimea sidebar-ului */
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #424040cc; 
+    padding: 20px;
+    color: #fff;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.sidebar h1 {
+    color:#f39c12;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px; /* Am adăugat un spațiu între butoanele pentru admin și cele pentru nominalizări */
+}
+
+.buttons {
+    margin-bottom: 10px;
+    padding: 10px 0;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.2); 
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 5px; 
+}
+
+.button:hover {
+    background-color: goldenrod;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
+}
+
+
+.add-button {
+    background-color: goldenrod;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px; 
+}
+
+.add-button:hover {
+    background-color: rgb(104, 103, 99);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
+}
+
+.del-button {
+    background-color: rgb(79, 74, 61);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px; 
+}
+
+.del-button:hover {
+    background-color: rgb(218, 9, 9);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
+}
+.nominee-title {
+    margin-bottom: 50px; 
+}
+
+.button-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f2f2f2; 
+    padding: 20px; 
+    border: 2px solid #ccc;
+    border-radius: 5px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+

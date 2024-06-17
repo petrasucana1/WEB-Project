@@ -1,5 +1,5 @@
 <?php
-    include ("html/navbar.html");
+    include ("components/navbar.html");
     $selected_year = isset($_GET['year']) ? $_GET['year'] : null;
 ?>
 <!DOCTYPE html>
@@ -8,7 +8,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/styles_nominees.css">
-    <link rel="stylesheet" href="styles/styles_nav_footer.css">
 
 </head>
 <body>
@@ -27,7 +26,7 @@
                     ?>
                 </select>
             </div>
-            <button type="submit" class="SearchButton"><span>Search</span></button>
+            <button type="button" class="SearchButton" onclick="window.location.href='Search.php'"><span>Search</span></button>
         </form>
     </div>
 </section>
@@ -71,5 +70,5 @@
 </script>
 </html>
 <?php
-    include ("html/footer.html");
+    include ("components/footer.html");
 ?>
