@@ -1,16 +1,48 @@
 <?php
 
+session_start();
+
+if (!isset($_SESSION['email'])) {
+    header("Location: components/404Error.html");
+    exit;
+}
+
+
 include_once '../app/models/Admin.php';
 include_once '../app/models/Actor.php';
 include_once '../app/models/Movie.php';
+include_once '../app/models/Nominee.php';
+include_once '../app/models/News.php';
 
 $admin = new Admin();
 $actor = new Actor();
 $movie = new Movie();
+$nominee= new Nominee();
+$news= new News();
 
 $admins = $admin->getAdmins();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['import'])) {
+        if (isset($_FILES['file']) && $_FILES['file']['error'] == UPLOAD_ERR_OK) {
+            $fileTmpPath = $_FILES['file']['tmp_name'];
+        
+
+            $result = $nominee->importCSV($fileTmpPath);
+    
+            if ($result) {
+                $_SESSION['message'] = "Data imported successfully!";
+                $_SESSION['message_type'] = "success";
+            } else {
+                $_SESSION['message'] = "Failed to import data.";
+                $_SESSION['message_type'] = "error";
+            }
+        } else {
+            $_SESSION['message'] = "File upload error.";
+            $_SESSION['message_type'] = "error";
+        }
+    }
+
     if (isset($_POST['action'])) {
         $action = $_POST['action'];
 
@@ -21,6 +53,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $password_hash = password_hash($password_plain, PASSWORD_DEFAULT);
 
             $result = $admin->editAdmin($admin_id, $email, $password_hash);
+            if ($result) {
+                $_SESSION['message'] = "Admin modified successfully!";
+                $_SESSION['message_type'] = "success";
+            } else {
+                $_SESSION['message'] = "Failed to modify admin.";
+                $_SESSION['message_type'] = "error";
+            }
             header("Location: " . $_SERVER['REQUEST_URI']);
             exit();
         }
@@ -28,6 +67,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($action === 'delete') {
             $admin_id = $_POST['admin_id'];
             $result = $admin->deleteAdmin($admin_id);
+            if ($result) {
+                $_SESSION['message'] = "Admin deleted successfully!";
+                $_SESSION['message_type'] = "success";
+            } else {
+                $_SESSION['message'] = "Failed to delete admin.";
+                $_SESSION['message_type'] = "error";
+            }
             header("Location: " . $_SERVER['REQUEST_URI']);
             exit();
         }
@@ -54,6 +100,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ];
 
             $result = $actor->addActor($data);
+            if ($result) {
+                $_SESSION['message'] = "Actor added successfully!";
+                $_SESSION['message_type'] = "success";
+            } else {
+                $_SESSION['message'] = "Failed to add actor.";
+                $_SESSION['message_type'] = "error";
+            }
             header("Location: " . $_SERVER['REQUEST_URI']);
             exit();
         }
@@ -61,10 +114,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($action === 'deleteActor') {
             $actor_id = $_POST['id'];
             $result = $actor->deleteActor($actor_id);
+            if ($result) {
+                $_SESSION['message'] = "Actor deleted successfully!";
+                $_SESSION['message_type'] = "success";
+            } else {
+                $_SESSION['message'] = "Failed to delete actor.";
+                $_SESSION['message_type'] = "error";
+            }
             header("Location: " . $_SERVER['REQUEST_URI']);
             exit();
         }
-        
+
         if ($action === 'addMovie') {
             $actor_id = $_POST['actor_id'];
             $title = $_POST['title'];
@@ -81,6 +141,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ];
 
             $result = $movie->addMovie($data);
+            if ($result) {
+                $_SESSION['message'] = "Movie added successfully!";
+                $_SESSION['message_type'] = "success";
+            } else {
+                $_SESSION['message'] = "Failed to add movie.";
+                $_SESSION['message_type'] = "error";
+            }
             header("Location: " . $_SERVER['REQUEST_URI']);
             exit();
         }
@@ -88,6 +155,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($action === 'deleteMovie') {
             $movie_id = $_POST['id'];
             $result = $movie->deleteMovie($movie_id);
+            if ($result) {
+                $_SESSION['message'] = "Movie deleted successfully!";
+                $_SESSION['message_type'] = "success";
+            } else {
+                $_SESSION['message'] = "Failed to delete movie.";
+                $_SESSION['message_type'] = "error";
+            }
+            header("Location: " . $_SERVER['REQUEST_URI']);
+            exit();
+        }
+
+        if ($action === 'addNews') {
+            $title = $_POST['title'];
+            $date = $_POST['date'];
+            $link = $_POST['link'];
+
+            $data = [
+                'title' => $title,
+                'date' => $date,
+                'link' => $link
+            ];
+
+            $result = $news->addNews($data);
+            if ($result) {
+                $_SESSION['message'] = "News added successfully!";
+                $_SESSION['message_type'] = "success";
+            } else {
+                $_SESSION['message'] = "Failed to add news.";
+                $_SESSION['message_type'] = "error";
+            }
+            header("Location: " . $_SERVER['REQUEST_URI']);
+            exit();
+        }
+
+        if ($action === 'deleteNews') {
+            $news_id = $_POST['id'];
+            $result = $news->deleteNews($news_id);
+            if ($result) {
+                $_SESSION['message'] = "News deleted successfully!";
+                $_SESSION['message_type'] = "success";
+            } else {
+                $_SESSION['message'] = "Failed to delete news.";
+                $_SESSION['message_type'] = "error";
+            }
             header("Location: " . $_SERVER['REQUEST_URI']);
             exit();
         }
@@ -102,11 +213,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ];
 
         $result = $admin->addAdmin($data);
+        if ($result) {
+            $_SESSION['message'] = "Admin added successfully!";
+            $_SESSION['message_type'] = "success";
+        } else {
+            $_SESSION['message'] = "Failed to add admin.";
+            $_SESSION['message_type'] = "error";
+        }
         header("Location: " . $_SERVER['REQUEST_URI']);
         exit();
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -119,12 +238,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="styles/styles_database.css">
 </head>
 <body>
+    <div class="message" id="message"></div>
     <div class="sidebar">
         <h1 style="color: goldenrod;">Dashboard</h1>
         <div class="button-container">
             <button class="button" onclick="showSection('admin-settings')">Admin Settings</button>
             <button class="button" onclick="showSection('database-settings')">Database Settings</button>
-            <button class="button">Logout</button>
+            <a href="Logout.php" style=" text-decoration: none; padding-left: 40%;" class="button">Logout</a>
         </div>
     </div>
 
@@ -199,11 +319,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <button type="button" class="del-button" onclick="openDeleteMovieModal()">Delete Movie</button>
             </div>
             <hr>
-            <h2>Import from CSV</h2> 
+            <h2>News Table Management</h2> 
             <div class="buttons">
-                <label>Choose CSV file</label>
-                <input  class="file" type="file" name="file" accept=".csv">
-                <button type="submit" name="import" class="del-button">Import</button>
+                <button type="button" class="add-button" onclick="openAddNewsModal()">Add News</button>
+                <button type="button" class="del-button" onclick="openDeleteNewsModal()">Delete News</button>
+            </div>
+            <hr>
+            <div class="import-section">
+                <h2>Import from CSV</h2>
+                <form method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="file">Choose CSV file</label>
+                        <input id="file" class="file-input" type="file" name="file" accept=".csv" required>
+                    </div>
+                    <button type="submit" name="import" class="import-button">Import</button>
+                </form>
             </div>
         </div>
 
@@ -277,10 +407,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </form>
         </div>
     </div>
+
+    <div id="addNewsModal" class="modal">
+        <div class="modal-content">
+            <h2>Add News</h2>
+            <form id="addNewsForm" method="POST" action="">
+                <label for="title">News Title:</label>
+                <input type="text" id="title" name="title" required><br><br>
+                <label for="date">News Date:</label>
+                <input type="text" id="date" name="date" required><br><br>
+                <label for="link">News Link:</label>
+                <input type="text" id="link" name="link" required><br><br>
+                <button type="button" onclick="closeAddNewsModal()" class="modify-button">Cancel</button>
+                <button type="submit" name="action" value="addNews" class="modify-button">Submit Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="deleteNewsModal" class="modal">
+        <div class="modal-content">
+            <h2>Delete News</h2>
+            <form id="deleteNewsForm" method="POST" action="">
+                <label for="id">News Id:</label>
+                <input type="number" id="id" name="id" required><br><br>
+                <button type="button" onclick="closeDeleteNewsModal()" class="modify-button">Cancel</button>
+                <button type="submit" name="action" value="deleteNews" class="modify-button">Submit Changes</button>
+            </form>
+        </div>
+    </div>
 </body>
 
 <script>
-    // Function to open the modify modal and fill in data
     function openModal(id, email) {
         var modal = document.getElementById("modifyModal");
         var modifyId = document.getElementById("modifyId");
@@ -292,13 +449,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         modal.style.display = "block";
     }
 
-    // Function to close the modify modal
     function closeModal() {
         var modal = document.getElementById("modifyModal");
         modal.style.display = "none";
     }
 
-    // Function to toggle sections
     function showSection(sectionId) {
         var sections = document.getElementsByClassName('section');
         for (var i = 0; i < sections.length; i++) {
@@ -307,6 +462,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         document.getElementById(sectionId).style.display = 'block';
     }
 
+    window.onload = function() {
+            const message = '<?php echo isset($_SESSION["message"]) ? $_SESSION["message"] : ""; ?>';
+            const messageType = '<?php echo isset($_SESSION["message_type"]) ? $_SESSION["message_type"] : ""; ?>';
+            
+            if (message) {
+                const messageDiv = document.getElementById('message');
+                messageDiv.classList.add(messageType);
+                messageDiv.textContent = message;
+                messageDiv.style.display = 'block';
+                setTimeout(function() {
+                    messageDiv.style.display = 'none';
+                }, 2000);
+                <?php unset($_SESSION['message']); unset($_SESSION['message_type']); ?>
+            }
+        };
+        
     // Functions to handle opening and closing modals for adding and deleting actors and movies
     function openAddActorModal() {
         var modal = document.getElementById("addActorModal");
@@ -345,6 +516,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     function closeDeleteMovieModal() {
         var modal = document.getElementById("deleteMovieModal");
+        modal.style.display = "none";
+    }
+
+    function openDeleteNewsModal() {
+        var modal = document.getElementById("deleteNewsModal");
+        modal.style.display = "block";
+    }
+
+    function closeDeleteNewsModal() {
+        var modal = document.getElementById("deleteNewsModal");
+        modal.style.display = "none";
+    }
+
+    function openAddNewsModal() {
+        var modal = document.getElementById("addNewsModal");
+        modal.style.display = "block";
+    }
+
+    function closeAddNewsModal() {
+        var modal = document.getElementById("addNewsModal");
         modal.style.display = "none";
     }
 
