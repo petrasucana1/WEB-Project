@@ -120,29 +120,29 @@ class Nominee extends DB{
     function importCSV($file) {
         try {
             $handle = fopen($file, "r");
-            if ($handle === FALSE) {
-                throw new Exception("Could not open the file!");
-            }
 
-            $sql = "INSERT INTO nominees (`First Name`, `Last Name`, `Category`, `Project`, `Year`, `Show`, `Award`) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO nominees (`First Name`, `Last Name`, `Category`, `Project`, `Year`, `Show`, `Award`) VALUES (?,?,?,?,?,?,?)";
             $stmt = $this->pdo->prepare($sql);
-    
-            while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-                $stmt->execute($data);
+            $stmt->execute();
+
+            while (($data = fgetcsv($handle)) !== FALSE) {
+                // Bind parametrii 
+                $types = str_repeat("s", count($data)); 
+                $stmt->bindParam($types, ...$data);
+                $result = $stmt->execute();
             }
-  
+            if ($stmt->rowCount() > 0) {
+                return true; // Nominee updated successfully
+            } else {
+                return false; // Nominee not found
+            }
             fclose($handle);
-    
-            return true; 
+
         } catch (PDOException $e) {
-            echo "Error importing data: " . $e->getMessage();
-            return false;
-        } catch (Exception $e) {
-            echo "Error: " . $e->getMessage();
+            echo "Error deleting user: " . $e->getMessage();
             return false;
         }
     }
-    
         
 }
 

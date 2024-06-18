@@ -5,6 +5,7 @@ body {
     margin: 0;
     padding: 0;
 }
+
 .sidebar {
     width: 200px; /* Am redus lățimea sidebar-ului */
     height: 100%;
@@ -45,3 +46,4 @@ body {
     background-color: goldenrod;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
 }
+

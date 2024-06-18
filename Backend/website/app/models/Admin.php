@@ -66,19 +66,5 @@ class Admin extends DB{
             return false;
         }
     }
-
-    function getAdminByEmail($email) {
-        try {
-            $sql = "SELECT * FROM admins WHERE Email = :email";
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-            $stmt->execute();
-            $admin= $stmt->fetch(PDO::FETCH_ASSOC);
-            return $admin;
-        } catch (PDOException $e) {
-            echo "Error fetching admin: " . $e->getMessage();
-            return null;
-        }
-    }
 }
 ?>
