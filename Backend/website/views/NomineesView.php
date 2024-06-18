@@ -44,10 +44,10 @@ foreach ($categories as $category => $nomineesInCategory):
                             $imageUrl = $baseImageUrl . $actor['profile_path'];
                             echo "<img src='$imageUrl' alt='Actor Profile Picture'>";
                         }else{ 
-                            //DEFAULT ZENDAYA PHOTO
+                            //DEFAULT PHOTO
                             $baseImageUrl = "https://image.tmdb.org/t/p/w500";
                             $imageUrl = $baseImageUrl . "/hC2qgP2mdrXZWmKF0WNSlM92Vuz.jpg";
-                            echo "<img src='$imageUrl' alt='Actor Profile Picture'>";
+                            echo "<img src='photos/default.JPG' alt='Actor Profile Picture'>";
                         }
                         break; 
                     }
