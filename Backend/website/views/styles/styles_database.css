@@ -95,3 +95,80 @@ body {
     align-items: center; 
 }
 
+
+/* Import CSV Section Styles */
+.import-section {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.import-section h2 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.import-section .form-group {
+    margin-bottom: 15px;
+}
+
+.import-section label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.import-section .file-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.import-section .file-input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.import-section .import-button {
+    background-color: goldenrod;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px; 
+}
+
+.import-section .import-button:hover {
+    background-color: rgb(104, 103, 99);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
+}
+.message {
+    display: none;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 200px; /* Adjust width to make it smaller */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Optional: add some shadow for better visibility */
+    z-index: 1000; /* Ensure the message is on top */
+    font-size: 14px; /* Adjust font size for better fit */
+}
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+

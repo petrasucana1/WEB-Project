@@ -1,31 +1,34 @@
-/* GENERAL */
-h1 {
+/*GENERAL*/
+h1{
   font-size: 2vw;
-  color: goldenrod;
+  color: goldenrod ;
   margin-top: 3%;
+
 }
 
-h2 {
+h2{
   font-size: 1.5vw;
-  color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255) ;
   text-decoration: underline;
   text-decoration-color: goldenrod;
 }
 
-h3 {
+h3{
   font-size: 1vw;
   font-style: italic;
   color: rgb(199, 194, 194);
 }
 
-p {
-  font-size: 1.5vw;
-  font-family: "Georgia", serif;
+p{
+  font-size: 1.5vw; 
+  font-family: "Georgia", serif; 
   color: white;
-  padding: 3%;
+  padding: 3%; 
+
+
 }
 
-a {
+a{
   text-decoration: none;
 }
 
@@ -34,27 +37,27 @@ body {
   margin: 0;
 }
 
-/* TOP_BODY */
+
+
+/*TOP_BODY*/
+
 .top_body {
   display: flex;
   position: relative;
   align-items: center;
-  justify-content: space-between;
+  justify-content:space-between;
   width: 100%;
   height: 100%;
   box-sizing: border-box;
   padding: 3% 10%;
   background-color: #333;
+
 }
 
-/* styles_actor.css */
-
-/* Ajustări pentru imaginea actorului */
 .left_side {
   position: relative;
-  width: 30%; /* Ajustează dimensiunea dorită pentru imagine */
+  width: 100%;
   overflow: hidden;
-  margin-right: 20px; /* Spațiere între imagine și informațiile din dreapta */
 }
 
 .image {
@@ -64,7 +67,7 @@ body {
   object-fit: cover;
   border-radius: 15px;
   border: 2px solid goldenrod;
-  transition: transform 0.3s ease; /* Tranziție pentru efectul de hover */
+ 
 }
 
 .overlay {
@@ -73,70 +76,62 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Fundal semi-transparent pentru overlay */
+  background-color: #dbdbd241;
   overflow: hidden;
   width: 100%;
-  height: 100%;
-  opacity: 0; /* Inițial ascuns */
-  transition: opacity 0.3s ease; /* Tranziție pentru vizibilitate */
+  height: 0;
+  transition: .5s ease;
   border-radius: 15px;
 }
 
+
 .left_side:hover .overlay {
-  opacity: 1; /* Afișează overlay la hover */
+  height: 100%;
 }
 
-.left_side:hover .image {
-  transform: scale(1.05); /* Mărește imaginea la hover */
-}
 
 .actor_info {
-  color: white;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 20px;
+  color: rgb(9, 9, 9);
+  font-size: 2vw;
   text-align: center;
-  opacity: 0; /* Inițial ascuns */
-  transition: opacity 0.3s ease; /* Tranziție pentru vizibilitate */
-}
-
-.left_side:hover .actor_info {
-  opacity: 1; /* Afișează info la hover */
-}
-
-
-
-.personal_details {
-  text-align: left;
-}
-
-.right_side {
   width: 100%;
-  box-sizing: border-box;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-.right_side p {
-  text-align: center;
+.personal_details {
+  text-align: left;
 }
 
+
+.right_side {
+  width: 100%; 
+  box-sizing: border-box;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; 
+}
+.right_side p{
+  text-align: center;
+}
 @media (max-width: 700px) {
   .top_body {
-      flex-wrap: wrap;
+    flex-wrap: wrap;
   }
 
-  .left_side,
-  .right_side {
+  .left_side, .right_side{
+    
       flex: 100%;
   }
 }
 
-/* BOTTOM_BODY */
+
+/*BOTTOM_BODY*/
+
 .bottom_body {
   width: 100%;
   box-sizing: border-box;
@@ -155,7 +150,7 @@ body {
 
 .photo_container {
   position: relative;
-  background-color: rgb(26, 28, 26);
+  background-color:rgb(26, 28, 26);
   overflow: hidden;
   padding: 3%;
   display: flex;
@@ -163,20 +158,17 @@ body {
   border-radius: 20px;
 }
 
-.scroll-outer {
-  width: calc(100% - 80px); /* Adjust based on button width */
-  overflow: hidden;
-}
-
 .scroll-container {
   display: flex;
   flex-wrap: nowrap;
   padding: 0;
+  overflow-x: scroll;
   scroll-behavior: smooth;
 }
 
 .scroll-container img {
   padding: 2%;
+ 
 }
 
 .scroll-button {
@@ -210,7 +202,9 @@ body {
   background-color: #777;
 }
 
-/* FOOTER */
+
+/*FOOTER
+
 footer {
   background-color: #424040cc;
   color: #fff;
@@ -220,15 +214,14 @@ footer {
   padding: 10px;
 }
 
-.admin {
-  color: #fff;
+.admin{
+  color:#fff;
   text-decoration: none;
   font-size: 2vw;
   margin-bottom: 2vw;
 }
-
-.admin:hover {
-  color: goldenrod;
+.admin:hover{
+  color:goldenrod;
   opacity: 1;
 }
 
@@ -245,16 +238,16 @@ footer {
 
 @media (max-width: 500px) {
   footer {
-      flex-direction: column;
-      align-items: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .footer-left {
-      margin-bottom: 10px;
+    margin-bottom: 10px;
   }
 
   .footer-right {
-      display: flex;
-      gap: 10px;
+    display: flex;
+    gap: 10px;
   }
-}
+}*/
