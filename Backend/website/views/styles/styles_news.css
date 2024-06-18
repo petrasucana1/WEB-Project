@@ -1,4 +1,4 @@
-/*GENERAL*/
+/* GENERAL */
 h1 {
   font-size: 1.5vw;
   color: goldenrod;
@@ -34,13 +34,15 @@ body {
   background-repeat: no-repeat;
 }
 
-/*NEWS*/
+/* NEWS */
 table {
   background-color: #424040e7; 
   border: 0.7vw solid black;
   border-radius: 15px;
-  padding: 3%;
+  padding: 5%;
   margin: 3% 15%;
+  border-collapse: separate;
+  border-spacing: 0 1vw; /* Adjust the value to control the spacing */
 }
 
 th {
@@ -56,6 +58,18 @@ th {
 
 th:hover {
   opacity: 1;
+}
+
+td {
+  background-color: #424040e2;
+  border: 0.2vw solid grey; /* Smaller border and gray color */
+  border-radius: 10px; /* Smaller border radius */
+  padding: 15px;
+  text-align: left;
+}
+
+tr {
+  margin-bottom: 1vw; /* Adds space between rows */
 }
 
 button {
