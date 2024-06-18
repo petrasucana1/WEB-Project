@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Settings</title>
+    <link rel="stylesheet" href="../styles/styles_admin.css">
+    <link rel="stylesheet" href="../styles/dashboard.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h1 style="color: goldenrod;">Dashboard</h1>
+        <div class="button-container">
+            <button class="button">Admin Settings</button>
+            <button class="button">Database Settings</button>
+            <button class="button">Logout</button>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Admin List</h1>
+        <div class="admin-table">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+               
+                <tbody id="admin-list">
+                    <!-- Aici vei afișa lista de admini -->
+                </tbody>
+            </table>
+        </div>
+        
+
+        <tr class="add-admin-container">
+            <form method="POST" action="">
+                <td></td>
+                <td><input type="email" id="new-admin-email" name="email" required  placeholder="Enter email"></td>
+                <td><input type="password"  id="new-admin-password" name="password" required placeholder="Enter password"></td>
+                <td><button type="submit" class="add-admin-button" >Add Admin</button></td>
+            </form>
+        </tr>
+
+    </div>
+    <script>
+        let adminId = 1; // ID-ul următorului admin adăugat
+
+        function addAdmin() {
+            const emailInput = document.getElementById('new-admin-email');
+            const passwordInput = document.getElementById('new-admin-password');
+            const username = usernameInput.value.trim();
+            const email = emailInput.value.trim();
+
+            if (username && email) {
+                const adminList = document.getElementById('admin-list');
+                const row = document.createElement('tr');
+
+                row.innerHTML = `
+                    <td>${adminId}</td>
+                    <td>${username}</td>
+                    <td>${email}</td>
+                    <td><button class="delete-button" onclick="deleteAdmin(this)">Delete</button></td>
+                `;
+
+                adminList.appendChild(row);
+                adminId++; // Incrementăm ID-ul pentru următorul admin
+                document.getElementById('new-admin-id').value = adminId; // Actualizăm ID-ul în câmpul de introducere
+                usernameInput.value = ''; // Resetează câmpul de introducere
+                emailInput.value = ''; // Resetează câmpul de introducere
+            } else {
+                alert('Please enter both username and email.');
+            }
+        }
+
+        function deleteAdmin(button) {
+            const row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById('new-admin-id').value = adminId; // Setează ID-ul inițial la încărcarea paginii
+        });
+    </script>
+</body>
+</html>

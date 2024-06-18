@@ -1,0 +1,215 @@
+/* GENERAL */
+h1 {
+  font-size: 2vw;
+  color: goldenrod;
+  margin-top: 3%;
+}
+
+h2 {
+  font-size: 1.5vw;
+  color: rgb(255, 255, 255);
+  text-decoration: underline;
+  text-decoration-color: goldenrod;
+}
+
+h3 {
+  font-size: 1vw;
+  font-style: italic;
+  color: rgb(199, 194, 194);
+}
+
+p {
+  font-size: 1.5vw;
+  font-family: "Georgia", serif;
+  color: white;
+  padding: 3%;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background-color: #424040cc;
+  margin: 0;
+}
+
+/* TOP_BODY */
+.top_body {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 3% 10%;
+  background-color: #333;
+}
+
+/* styles_actor.css */
+
+/* Ajustări pentru imaginea actorului */
+.left_side {
+  position: relative;
+  width: 30%; /* Ajustează dimensiunea dorită pentru imagine */
+  overflow: hidden;
+  margin-right: 20px; /* Spațiere între imagine și informațiile din dreapta */
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 15px;
+  border: 2px solid goldenrod;
+  transition: transform 0.3s ease; /* Tranziție pentru efectul de hover */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Fundal semi-transparent pentru overlay */
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  opacity: 0; /* Inițial ascuns */
+  transition: opacity 0.3s ease; /* Tranziție pentru vizibilitate */
+  border-radius: 15px;
+}
+
+.left_side:hover .overlay {
+  opacity: 1; /* Afișează overlay la hover */
+}
+
+.left_side:hover .image {
+  transform: scale(1.05); /* Mărește imaginea la hover */
+}
+
+.actor_info {
+  color: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  text-align: center;
+  opacity: 0; /* Inițial ascuns */
+  transition: opacity 0.3s ease; /* Tranziție pentru vizibilitate */
+}
+
+.left_side:hover .actor_info {
+  opacity: 1; /* Afișează info la hover */
+}
+
+
+
+.personal_details {
+  text-align: left;
+}
+
+.right_side {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.right_side p {
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .top_body {
+      flex-wrap: wrap;
+  }
+
+  .left_side,
+  .right_side {
+      flex: 100%;
+  }
+}
+
+/* BOTTOM_BODY */
+.bottom_body {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 2%;
+  background-color: rgb(115, 120, 115);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5%;
+  margin-top: 2%;
+}
+
+.bottom_body::-webkit-scrollbar {
+  display: none;
+}
+
+.photo_container {
+  position: relative;
+  background-color: rgb(26, 28, 26);
+  overflow: hidden;
+  padding: 1%;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  max-width: 100%;
+}
+
+.scroll-outer {
+  width: calc(100% - 60px); /* Adjust based on button width */
+  overflow: hidden;
+}
+
+.scroll-container {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+.scroll-container img {
+  padding: 1%;
+  width: auto; 
+  max-height: 400px; 
+  object-fit: contain; /* Adjust to preserve aspect ratio */
+}
+
+.scroll-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #333;
+  color: white;
+  font-size: 4vw;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  margin: 0 3px;
+  z-index: 1;
+}
+
+.scroll-left {
+  left: 5px;
+}
+
+.scroll-right {
+  right: 5px;
+}
+
+.scroll-button:hover {
+  background-color: #555;
+}
+
+.scroll-button:active {
+  background-color: #777;
+}

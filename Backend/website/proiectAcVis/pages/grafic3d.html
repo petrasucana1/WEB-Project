@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grafic 3D Pie cu Google Charts</title>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+<div id="myChart" style="width:100%; max-width:600px; height:500px;"></div>
+
+<script>
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+    // Set Data
+    const data = google.visualization.arrayToDataTable([
+        ['Lună', 'Vânzări'],
+        ['Ianuarie', 12],
+        ['Februarie', 19],
+        ['Martie', 3],
+        ['Aprilie', 5],
+        ['Mai', 2],
+        ['Iunie', 3]
+    ]);
+
+    // Set Options
+    const options = {
+        title: 'Vânzări pe lună',
+        is3D: true,
+        slices: {
+            0: { color: '#FF6384' },
+            1: { color: '#36A2EB' },
+            2: { color: '#FFCE56' },
+            3: { color: '#4BC0C0' },
+            4: { color: '#9966FF' },
+            5: { color: '#FF9F40' }
+        }
+    };
+
+    // Draw
+    const chart = new google.visualization.PieChart(document.getElementById('myChart'));
+    chart.draw(data, options);
+}
+</script>
+</body>
+</html>
