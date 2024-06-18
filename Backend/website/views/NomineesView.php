@@ -52,8 +52,10 @@ foreach ($categories as $category => $nomineesInCategory):
                         break; 
                     }
                 endforeach;
+
                 ?>
-                            
+                 <div class="nomTitle"><?= htmlspecialchars($category) ?></div> 
+                        
             </div>
             <div class="text">
                 <?php

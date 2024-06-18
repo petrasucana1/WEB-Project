@@ -66,18 +66,26 @@ $after2012Percentage = round(($after2012Count / $totalActors) * 100, 2);
         }
         .export-buttons {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 20px; /* Spațiu de 20px sus de buton */
+            margin-bottom: 30px;
         }
         .export-buttons button {
             margin: 0 10px;
             padding: 10px 20px;
             cursor: pointer;
         }
+        .export-buttons button:hover {
+        background-color: grey;
+        }
+
+        .description{
+            margin:0 30px 30px 30px;
+        }
     </style>
 </head>
 <body>
     <div id="chartContainer"></div>
-
+    <div class="description">The page features a chart illustrating the distribution of actors across generations.Each category shows the percentage of actors born within specific year ranges. The chart visually represents these generational distributions, providing insights into the demographic composition of actors in the dataset. The page includes interactive features for resizing the chart and exporting data in CSV format, enhancing usability and data accessibility.</div>
     <div class="export-buttons">
         <button onclick="exportToCSV()">Export CSV</button>
     </div>
@@ -102,7 +110,7 @@ $after2012Percentage = round(($after2012Count / $totalActors) * 100, 2);
 
             // Set Options
             const options = {
-                title: 'Distribuție în generații',
+                title: 'Distribuție în generații ',
                 is3D: true,
                 slices: {
                     0: { color: '#FF6384' }, // Gen Z
@@ -151,8 +159,9 @@ $after2012Percentage = round(($after2012Count / $totalActors) * 100, 2);
             document.body.removeChild(element);
         }
     </script>
+
+    <?php
+    include ("components/footer.html");
+    ?>
 </body>
 </html>
-<?php
-    include ("components/footer.html");
-?>

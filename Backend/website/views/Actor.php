@@ -47,8 +47,8 @@ if ($actorId) {
                 <h2><?= $name ?></h2>
                 <div class="personal_details">
                     <p><strong>Personal details:</strong></p>
-                    <p><strong>Known for departament:</strong> <?= $known_for_departament ?></p>
-                    <p><strong>Born:</strong> <?= $birthday?> </p>
+                    <p><strong>Known for department:</strong> <?= $known_for_departament ?></p>
+                    <p><strong>Born:</strong> <?= $birthday ?> </p>
                     <p><strong>Place of birth:</strong> <?= $place_of_birth ?></p>
                     <p><strong>Popularity:</strong> <?= $popularity ?></p>
                 </div>
@@ -57,22 +57,57 @@ if ($actorId) {
     </div>
     <div class="right_side">
         <h1><?= $name ?></h1>
-        <p><?= $bio ?></p>
+        <p><?= substr($bio, 0, strpos($bio, '.', strpos($bio, '.', strpos($bio, '.') + 1) + 1) + 1) ?></p>
+        <button id="read-more-button">Read More</button>
+        <p id="full-bio" style="display: none;"><?= $bio ?></p>
     </div>
 </div>
+
 <div class="bottom_body">
     <div class="photo_container">
         <button class="scroll-button scroll-left">&#8249;</button>
-        <div class="scroll-container">
-            <?php foreach ($movies as $movie): ?>
-                <img src="<?= $baseImageUrl . $movie['poster_path'] ?>" alt="<?= htmlspecialchars($movie['title']) ?>" width="300" height="400">
-            <?php endforeach; ?>
+        <div class="scroll-outer">
+            <div class="scroll-container">
+                <?php foreach ($movies as $movie): ?>
+                    <img src="<?= $baseImageUrl . $movie['poster_path'] ?>" alt="<?= htmlspecialchars($movie['title']) ?>" width="300" height="400">
+                <?php endforeach; ?>
+            </div>
         </div>
         <button class="scroll-button scroll-right">&#8250;</button>
     </div>
 </div>
+
+<?php
+include ("components/footer.html");
+?>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const scrollLeftButton = document.querySelector(".scroll-left");
+        const scrollRightButton = document.querySelector(".scroll-right");
+        const scrollOuter = document.querySelector(".scroll-outer");
+
+        scrollLeftButton.addEventListener("click", function() {
+            scrollOuter.scrollBy({
+                left: -300, // Adjust this value as per your image width
+                behavior: "smooth"
+            });
+        });
+
+        scrollRightButton.addEventListener("click", function() {
+            scrollOuter.scrollBy({
+                left: 300, // Adjust this value as per your image width
+                behavior: "smooth"
+            });
+        });
+
+        const readMoreButton = document.getElementById('read-more-button');
+        const fullBio = document.getElementById('full-bio');
+
+        readMoreButton.addEventListener('click', function() {
+            fullBio.style.display = 'block';
+            readMoreButton.style.display = 'none';
+        });
+    });
+</script>
 </body>
 </html>
-<?php
-    include ("components/footer.html");
-    ?>

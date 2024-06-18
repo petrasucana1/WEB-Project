@@ -46,6 +46,15 @@ foreach ($actors as $top_actor) {
             padding: 10px 20px;
             font-size: 16px;
             margin-right: 10px;
+            margin-top: 20px; 
+            margin-bottom: 30px;
+        }
+        .export-button button:hover {
+        background-color: grey;
+          }
+
+        .description{
+            margin:30px;
         }
     </style>
 </head>
@@ -53,7 +62,7 @@ foreach ($actors as $top_actor) {
     <div id="chartContainer">
         <canvas id="barChart"></canvas>
     </div>
-    
+    <div class="description">This page features a compelling chart showcasing the popularity metrics of the top 10 actors from our database. Each actor's popularity is represented by their ranking based on various performance indicators. The chart visually illustrates the popularity distribution among these leading actors, providing valuable insights into their prominence within the industry.</div>
     <div class="buttons-container">
         <button class="export-button" id="downloadBarBtn">Exportă grafic bară ca WEBP</button>
     </div>
