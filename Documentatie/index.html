@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Documentație</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<article>
+  <header>
+    <h1>
+      AcVis (Actors Smart Visualiser)
+    </h1>
+  </header>
+  <h2>Cuprins</h2>
+  <ul>
+    <li>
+      <a href="#authors">Autori</a>
+    </li>
+    <li>
+      <a href="#introduction">1. Introducere</a>
+      <ul>
+        <li><a href="#introduction-purpose">1.1 Scop</a></li>
+        <li><a href="#conventions">1.2 Convenție de scriere</a></li>
+        <li><a href="#audience">1.3 Publicul țintă</a></li>
+        <li><a href="#product-scope">1.4 Scopul produsului</a></li>
+        <li><a href="#references">1.5 Referințe</a></li>
+      </ul>
+    </li>
+    <li><a href="#overall">2. Descriere Generală</a>
+      <ul>
+        <li><a href="#diagram">2.1 Diagrama C4</a></li>
+        <li><a href="#product-perspective">2.2 Perspectiva produsului</a></li>
+        <li><a href="#product-functions">2.3 Funcțiile produsului</a></li>
+        <li><a href="#users">2.4 Clase și caracteristici ale utilizatorilor</a></li>
+        <li><a href="#operating-environment">2.5 Mediul de operare</a></li>
+        <li><a href="#documentation">2.6 Documentația pentru utilizator</a></li>
+      </ul>
+    </li>
+    <li><a href="#external">3. Interfețele aplicației </a>
+      <ul>
+        <li><a href="#user-interface">3.1 Interfața utilizatorului </a>
+          <ul>
+            <li><a href="#nav-bar">3.1.1 Bara de navigație </a></li>
+            <li><a href="#footer-bar">3.1.2 Bara de subsol </a></li>
+            <li><a href="#login-page">3.1.3 Pagina de logare admin </a></li>
+            <li><a href="#home-page">3.1.4 Pagina de acasă </a></li>
+            <li><a href="#nominees-page">3.1.5 Pgina nominalizărilor</a></li>
+            <li><a href="#news-page">3.1.6 Pagina cu năutăți</a></li>
+            <li><a href="#search-page">3.1.7 Pagina de căutare</a></li>
+            <li><a href="#age-statistic-page">3.1.8 Statistica: Distributie pe generatii</a></li>
+            <li><a href="#movie-statistic-page">3.1.9 Statistica: Numarul de filme in care joaca actorii</a></li>
+            <li><a href="#popularity-statistic-page">3.1.10 Statistica: Popularitatea celor top10 actori</a></li>
+          </ul>
+        </li>
+        <li><a href="#hardware-interface">3.2 Interfața Hardware </a></li>
+        <li><a href="#software-interface">3.3 Interfața Software</a></li>
+        <li><a href="#communication-interface">3.4 Interfața de comunicare</a></li>
+      </ul>
+    </li>
+    <li><a href="#system-features">4. Caracteristici ale sistemului</a>
+      <ul>
+        <li><a href="#management">4.1 Gestionarea contului </a>
+          <ul>
+            <li><a href="#management-1">4.1.1 Descriere și generalități </a></li>
+            <li><a href="#management-2">4.1.2 Actualizarea informațiilor</a></li>
+            <li><a href="#management-3">4.1.3 Condiții de funcționare</a></li>
+          </ul>
+        </li>
+        <li><a href="#administrator">4.2 Secțiunea Admin</a>
+          <ul>
+            <li><a href="#administrator-1">4.2.1 Descriere și generalități</a></li>
+            <li><a href="#administrator-2">4.2.2 Actualizarea informațiilor</a></li>
+            <li><a href="#administrator-3">4.2.3 Condiții de funcționare</a></li>
+          </ul>
+        </li>
+        <li><a href="#logout">4.3 Secțiunea Logout</a>
+          <ul>
+            <li><a href="#logout-1">4.3.1 Descriere și generalități</a></li>
+            <li><a href="#logout-2">4.3.2 Actualizarea informațiilor</a></li>
+            <li><a href="#logout-3">4.3.3 Condiții de funcționare</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#non-functional">5.Funcționalități pentru protecție și securitate</a>
+      <ul>
+        <li><a href="#safety">5.1 Protecția datelor</a></li>
+        <li><a href="#security">5.2 Securizarea datelor</a></li>
+        <li><a href="#software-attributes">5.3 Calitățile Software </a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <div role="contentinfo">
+    <section id="authors" typeof="sa:AuthorsList">
+      <h2>Autori</h2>
+      <ul>
+        <li typeof="sa:ContributorRole" property="schema:author">
+            <span typeof="schema:Person">
+              <meta property="schema:givenName" content="Elena">
+              <meta property="schema:additionalName" content="">
+              <meta property="schema:familyName" content="Aioanei">
+              <span property="schema:name">Aioanei Elena</span>
+            </span>
+          <ul>
+            <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+              <a href="aioanei.elena@outlook.com" property="schema:email">aioanei.elena@outlook.com</a>
+            </li>
+          </ul>
+        </li>
+
+        <li typeof="sa:ContributorRole" property="schema:author">
+            <span typeof="schema:Person">
+              <meta property="schema:givenName" content="Ana">
+              <meta property="schema:additionalName" content="">
+              <meta property="schema:familyName" content="Petrașuc">
+              <span property="schema:name">Petrașuc Ana</span>
+            </span>
+          <ul>
+            <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+              <a href="petrasucana@yahoo.com" property="schema:email">petrasucana@yahoo.com</a>
+            </li>
+          </ul>
+        </li> 
+      </ul>
+    </section>
+  </div>
+
+  <section id="introduction">
+    <h3>1. Introducere</h3>
+    <section id="introduction-purpose">
+      <h4>1.1 Scop</h4>
+      <p>
+        AcVis (Actors Smart Visualiser) este o aplicație web dezvoltată de studenții menționați în secțiunea de Autori de la Facultatea de
+        Informatică a Universității Alexandru Ioan Cuza.
+        Scopul acestui document este acela de a prezenta o descriere detaliată a funcționalităților, precum și de
+        a specifica cerințele aplicației web. Această aplicație
+        va oferi o vizualizare flexibilă a datelor referitoare la nominalizările actorilor la premiile Screen Actors Guild (SAG) Awards. 
+        Cu ajutorul unui API REST/GraphQL propriu dezvoltat, această aplicație extrage și afișează informații esențiale despre nominalizați
+        și producțiile cinematografice în care aceștia sunt implicați, preluate de la The Movie Database (TMDb).
+      </p>
+    </section>
+    <section id="conventions">
+      <h4> 1.2 Convenția documentului</h4>
+      <ul>
+        <li>
+          Acest document urmează șablonul de documentație a cerințelor software conform IEEE Software Requirements
+          Specification.</li>
+        <li>
+          Textul <b>îngroșat</b> este folosit pentru a defini noțiuni personalizate sau pentru a accentua concepte
+          importante. </li>
+      </ul>
+    </section>
+    <section id="audience">
+      <h4>1.3 Publicul țintă</h4>
+      <p>
+        Acest document este destinat profesorilor, studenților sau dezvoltatorilor, însă orice utilizator, indiferent
+        de cunoștințele lor tehnologice,
+        poate consulta secțiunile de <b>Interfeța utilizatorului</b> și <b>Caracteristici ale sistemului</b> pentru a
+        obține o mai bună înțelegere a ceea ce oferă aplicația.
+      </p>
+
+    </section>
+    <section id="product-scope">
+      <h4>1.4 Scopul Produsului</h4>
+      <p>
+        Scopul aplicației AcVis (Actors Smart Visualiser) este de a oferi o platformă interactivă și informativă pentru
+        vizualizarea și analizarea datelor referitoare la nominalizările actorilor la premiile Screen Actors Guild (SAG) 
+        Awards, însoțite de informații suplimentare despre actori și producțiile cinematografice în care aceștia sunt 
+        implicați. Utilizatorii vor putea accesa aceste informații pentru fiecare ediție a evenimentului și vor putea 
+        căuta cu un filtru avansat preferințele lor in materie de premii, actori, ani. De asemenea, utilizatorii vor 
+        avea acces și la știri privitoare la edițiile care s-au desfășurat până în momentul curent.
+      </p>
+    </section>
+    <section id="references">
+      <h4>1.5 Bibliografie</h4>
+      <ul>
+        <li>Isepciuc Daniel, Site-ul Laboratorului Tehnologii Web, FII UAIC</li>
+        <li>Buraga Sabin-Corneliu, Site-ul Tehnologii Web, FII UAIC</li>
+        <li>H Rick. IEEE-Template - GitHub</li>
+      </ul>
+    </section>
+  </section>
+
+  <section id="overall">
+    <h3>2. Descriere Generală</h3>
+    <section id="diagram">
+      <h4>2.1 Diagrama C4</h4>
+      <li style="list-style: none" class="pictures"><img src="images/AcVisC4-Level1.png" alt="overview" width=100%></li>
+      <li style="list-style: none" class="pictures"><img src="images/AcVisC4-Level2.png" alt="overview" width=100%></li>
+    </section>
+   
+    <section id="product-perspective">
+      <h4>2.2 Perspectiva produsului</h4>
+      <p>AcVis (Actors Smart Visualiser) este o aplicație dezvoltată în cadrul cursului de Tehnologii Web, menită să
+        ofere informatii despre nominalizările actorilor la premiile Screen Actors Guild (SAG) Awards, însoțite de 
+        informații suplimentare despre actori și producțiile cinematografice în care aceștia sunt implicați.</p>
+    </section>
+    <section id="product-functions">
+      <h4>2.3 Funcționalitățile produsului</h4>
+      Fiecare utilizator va avea acces la urmatoarele funcționălități:
+      <ul>
+        <li>să consulte pagina "Home" și noutățile disponibile</li>
+        <li>să acceseze pagina "Nominees" pentru a vizualiza nominalizările și câștigătorii premiilor SAG Awards din ediția curentă sau cele anterioare</li>
+        <li>să acceseze pagina "Actor" pentru a vizualiza informații suplimentare despre un anumit actor și producțiile cinematografice în care acesta e implicat</li>
+        <li>să acceseze pagina "News" pentru a accesa știri privitoare la edițiile care s-au desfășurat până în momentul curent</li>
+        <li>să acceseze pagina "Share" pentru a beneficia de o căutare avansată în ceea ce privește preferințele lor în materie de premii, actori și ani</li>
+        <li>dacă utilizatorul are rol de <b>admin</b>, acesta poate sa se autentifice accesând pagina de "Login"</li>
+        <li>dacă utilizatorul are rol de <b>admin</b>, acesta poate aduce modificări aplicației web, având posibilitatea sa modifice baza de date</li>
+      </ul>
+    </section>
+    <section id="users">
+      <h4>2.4 Clase și caracteristici ale utilizatorilor</h4>
+      <h5>2.4.1 Utilizator principal</h5>
+      <ul>
+        <li>utilizatorii autentificați:</li>
+        <li style="list-style: none">
+          <ul>
+            <li>Autentificarea este posibilă doar în cazul administratorului, persoana care se ocupă cu mentenanța aplicației web</li>
+
+          </ul>
+        </li>
+        <li>
+          utilizatorii neautentificați:
+          <ul>
+            <li>Fani ai actorilor, profesioniștii din industria cinematografică, pasionații de film, jurnaliști și toți cei interesați de lumea filmului și care doresc să obțină o înțelegere mai profundă a contribuțiilor actorilor la arta cinematografică </li>
+          </ul>
+        </li>
+      </ul>
+      <h5>2.4.2 Caracteristici</h5>
+      <ul>
+        <li>Utilizatorii care sunt  autentificați, <b>administartorii</b>, pot accesa pagina de "Login" și toate celelalte pagini. De asemenea, au acces la baza de date, pot aduce modificări aplicației web și o pot îmbunătăți.
+        </li>
+        <li>Utilizatorii care nu sunt autentificați au acces la întreaga aplicație web, la toate informațiile afișate pe fiecare pagină. Ei pot vizualiza paginile: "Home", "Actor", "Nominees", "News" și "Search".
+            Au acces și la pagina "Login" destinată admin-ului, însă unde nu vor putea să-și creeze cont sau să se autentifice.
+        </li>
+      </ul>
+
+    </section>
+    <section id="operating-environment">
+      <h4>2.5 Mediul de operare</h4>
+      <p>
+        Produsul dezvoltat poate fi utilizat pe orice dispozitiv cu un browser web care suportă HTML5, CSS și
+        JavaScript.
+      </p>
+    </section>
+    <section id="documentation">
+      <h4>2.5 Documentația pentru utilizator</h4>
+      <p>
+        Utilizatorii pot consulta acest document pentru explicații detaliate despre funcționalitățile aplicației web.
+      </p>
+    </section>
+
+  </section>
+
+  <section id="external">
+    <h3>3. Interfețele aplicației</h3>
+
+    <section id="user-interface">
+      <h4>3.1 Interfața utilizatorului</h4>
+      Mai jos, puteți vedea o prezentare generală a fiecărei pagini a aplicației și funcționalităților pe care le oferă:
+    <ul>
+
+      <li id="nav-bar"><b>Bara de navigație</b></li>
+      <li style="list-style: none">
+        <ul>
+          <li>Aceasta reprezintă meniul de navigare către fiecare pagina a aplicației, în afară de cea de "Login Admin" și pagina "Actor", ce se poate accesa din pagina "Nominees", la fiecare actor în parte. Bara de navigație este prezentă pe fiecare pagină totodată</li>
+
+          <li style="list-style: none" class="pictures"><img src="images/Nav_bar.PNG" alt="login" width=100%>
+          </li>
+        </ul>
+      </li>
+
+      <li id="footer-bar"><b>Bara de subsol</b></li>
+      <li style="list-style: none">
+        <ul>
+          <li>Aceasta reprezintă partea de subsol a fiecărei pagini. Are în componență o altă versiune a logo-ului, un link de acces la pagina de logare admin și oferă conexiunea cu rețele de socializare, precum Instagram, Tik Tok și Facebook.</li>
+
+          <li style="list-style: none" class="pictures"><img src="images/footer_bar.PNG" alt="login" width=100%>
+          </li>
+        </ul>
+      </li>
+
+
+      <li id="login-page"><b>Pagina de logare admin</b></li>
+      <li style="list-style: none">
+        <ul>
+          <li>Pagina are rolul de a realiza autentificarea administratorilor.</li>
+          <li>Pentru a se autentifica, admin-ul trebuie să completeze câmpurile de "e-mail" și "parolă" cu
+            credențiale <b>valide</b>, urmând să acționeze butonul <b>Login</b>.
+          </li>
+          <li> În cazul în care un utilizator ce nu este administrator accesează link-ul ce îl trimite la pagină de "Login Admin",
+            acesta poate reveni la pagină principală AcVis accesând link -ul <b>Back to homepage</b>. </li>
+          
+          <li style="list-style: none" class="pictures"><img src="images/login.PNG" alt="login" width=100%>
+          </li>
+        </ul>
+      </li>
+
+      <li id="home-page"><b> Pagina de acasă</b></li>
+      <li style="list-style: none">
+        <ul>
+          <li>Pagină are rolul de a prezenta în prima parte câteva slide-uri cu imagini de la ultima ediție a evenimentului SAG Awards, iar în a doua parte, de jos, se face conexiunea cu pagina "News", afișându-se ultimele năutăți.</li>
+          <li style="list-style: none" class="pictures"><img src="images/home_part1.PNG" alt="overview" width=100%></li>
+          <li style="list-style: none" class="pictures"><img src="images/home_part2.PNG" alt="overview" width=100%></li>
+        </ul>
+      </li>
+
+      <li id="nominees-page"><b>Pagina nominalizărilor</b></li>
+      <li style="list-style: none">
+        <ul>
+          <li>Pagina oferă informații despre nominalizările actorilor la ultima ediție a concursului, inclusiv a câștigătorilor.
+             Apăsând pe numele unui artist acesta vă va trimite pe o pagină dedicată informațiilor despre artistul respectiv. Puteți selecta ediția din bar-ul aflat în mijlocul paginii pentru a viziona informații despre nominalizările din ediția respectivă.</li>
+
+            <li style="list-style: none" class="pictures"><img src="images/nominees_part1.PNG" alt="overview" width=100%></li>
+            <li style="list-style: none" class="pictures"><img src="images/nominees_part2.PNG" alt="overview" width=100%></li>  
+        </ul>
+      </li>
+      <li id="actors-page"><b>Pagina actorilor</b></li>
+      <li style="list-style: none">
+        <ul>
+          <li>Pagina ofera informații despre actori, precum o bibliografie proprie, citatul lor de la câștigarea premiului, și o listă cu filmele în care acesta a jucat.</li>
+      <li style="list-style: none" class="pictures"><img src="images/actor_part1.PNG" alt="overview" width=100%></li>
+            <li style="list-style: none" class="pictures"><img src="images/actor_part2.PNG" alt="overview" width=100%></li>
+
+      <li id="news-page"><b>Pagina cu năutăți</b></li>
+      <li style="list-style: none">
+        <ul>
+          <li>Pagina conține noutăți, știri despre gală, actori sau evenimente asemănătoare. Butonul <b>More news</b> vă va permite să vizionați mai multe știri. </li>
+          <li style="list-style: none" class="pictures"><img src="images/news_part1.PNG" alt="overview" width=100%></li>
+          <li style="list-style: none" class="pictures"><img src="images/news_part2.PNG" alt="overview" width=100%></li>
+
+          </li>
+        </ul>
+
+      <li id="search-page"><b>Pagina de căutare</b></li>
+      <li style="list-style: none">
+        <ul>
+          <li>Pagina conține o modalitate de a căuta un actor, un premiu sau nominalizați prin intermediul unui filtru de căutare. </li>
+          <li style="list-style: none" class="pictures"><img src="images/search.PNG" alt="overview" width=100%></li>
+        </ul>
+      </li>
+
+      <li id="age-statistic-page"><b>Statistica: distributie pe generatii</b></li>
+      <li style="list-style: none">
+        <ul>
+          <li>Pagina prezintă un grafic care ilustrează distribuția actorilor de-a lungul generațiilor. Fiecare categorie arată procentul de actori născuți în anumite intervale de ani. Graficul reprezintă vizual aceste distribuții generaționale, oferind perspective asupra compoziției demografice a actorilor din setul de date. Pagina include funcții interactive pentru redimensionarea diagramei și exportarea datelor în format CSV, îmbunătățind gradul de utilizare și accesibilitatea datelor. </li>
+          <li style="list-style: none" class="pictures"><img src="images/AgeGraph.JPG" alt="overview" width=100%></li>
+        </ul>
+      </li>
+
+      <li id="movies-statistic-page"><b>Statistica: Top10 actori si numarul de filme in care joaca</b></li>
+      <li style="list-style: none">
+        <ul>
+          <li>Această pagină prezintă un grafic perspicac care prezintă filmografia primilor 10 actori bazată pe baza noastră de date. Contribuția fiecărui actor este descrisă de numărul de filme în care a jucat, oferind o reprezentare vizuală clară a carierei lor prolifice. Graficul permite spectatorilor să înțeleagă și să compare producția cinematografică a acestor actori de frunte, oferind perspective valoroase asupra rolurilor lor extinse în diferite producții.</li>
+          <li style="list-style: none" class="pictures"><img src="images/MovieGraph.JPG" alt="overview" width=100%></li>
+        </ul>
+      </li>
+
+      <li id="popularity-statistic-page"><b>Pagina de căutare</b></li>
+      <li style="list-style: none">
+        <ul>
+          <li>Această pagină conține un grafic convingător care prezintă valorile de popularitate a primilor 10 actori din baza noastră de date. Popularitatea fiecărui actor este reprezentată de clasamentul lor bazat pe diverși indicatori de performanță. Graficul ilustrează vizual distribuția popularității între acești actori de frunte, oferind informații valoroase asupra proeminenței lor în industrie. </li>
+          <li style="list-style: none" class="pictures"><img src="images/PopularityGraph.JPG" alt="overview" width=100%></li>
+        </ul>
+      </li>
+
+      <section id="hardware-interface">
+
+        <h4>3.2 Interfața Hardware</h4>
+        <p>
+
+          Acest produs nu necesită interfețe hardware, funcționând pe orice platformă (calculatoare, laptopuri,
+          telefoane etc.), care are instalată un browser.
+        </p>
+      </section>
+
+      <section id="software-interface">
+        <h4>3.3 Interfața Software</h4>
+        <p>
+          Cerințele minime de software includ un browser funcțional, compatibil cu HTML5 și cu JavaScript.
+        <h5>Postgres Database</h5>
+        Aceasta reprezintă baza de date în care stocăm informații despre fiecare utilizator, intrebarile, chestionarele si
+        raspunsurile la acestea.
+
+      </section>
+
+      <section id="communication-interface">
+        <h4>3.4 Interfața de comunicare</h4>
+        <p>
+          Aplicația necesită o conexiune la internet. Standardul de comunicare care va fi utilizat este HTTP.
+        </p>
+      </section>
+
+      <section id="system-features">
+        <h3>4. Caracteristici ale sistemului</h3>
+        <section id="management">
+          <h4>4.1 Gestionarea contului</h4>
+
+          <h5 id="management-1">4.1.1 Descriere și generalități</h5>
+          Aplicația nu necesită ca utilizatorii să creeze un cont pentru a o utiliza.
+           Nu este nevoie de autentificare pentru a accesa funcționalitățile oferite.
+           Totuși, există posibilitatea de a crea și gestiona conturi de administrator.
+          <h5 id="management-2">4.1.2 Actualizarea informațiilor</h5>
+          <ul>
+            <li>
+              În momentul în care un cont de admin nou este creat, credențialele acestuia sunt introduse în baza de
+              date. De asemenea, când administratorul decide să-și modifice credențialele, noile valori sunt și ele
+              actualizate în baza de date.
+            </li>
+          </ul>
+          <h5 id="management-3">4.1.3 Condiții de funcționare</h5>
+          <ul>
+            <li>
+                Nu există cerințe de autentificare sau creare a unui cont pentru utilizarea aplicației de către utilizatori obișnuiți.
+                 Pentru accesul la funcționalitățile de administrare, este necesar un cont de administrator.
+            </li>
+          </ul>
+
+        </section>
+        <section id="administrator">
+          <h4>4.2 Secțiunea Admin</h4>
+          <h5 id="administrator-1">4.2.1 Descriere și generalități</h5>
+          Secțiunea <b>Admin</b> este destinată utilizatorilor ce au drepturi de <b>administrator</b> și această
+          oferă facilități pe care un utilizator normal nu le are. În momentul în care adminul accesează panoul de control,
+          va putea adaugă/modifică informații și poze direct de pe platforma. 
+
+          <h5 id="administrator-2">4.2.2 Actualizare informațiilor</h5>
+          <ul>
+            <li>
+              În momentul în care adminul adaugă o nominalizare sau alte detalii în legatură cu actorii, informațiile despre acestea sunt inserate
+              în baza de
+              date.
+            </li>
+            <li>
+              În momentul în care adminul modifica o nominalizare sau alte detalii în legatură cu actorii, informațiile despre acestea sunt
+              actualizate în baza de
+              date.
+            </li>
+          </ul>
+          <h5 id="administrator-3">4.2.3 Condiții de funcționare</h5>
+          <ul>
+            <li>
+              Utilizatorul trebuie să fie autentificat.
+            </li>
+            <li>
+              Utilizatorul trebuie să dețină drepturi de admin.
+            </li>
+          </ul>
+        </section>
+        <section id="logout">
+          <h4>4.3 Secțiunea de Logout</h4>
+          <h5 id="logout-1">4.3.1 Descriere și generalități</h5>
+          Secțiunea de <b>Logout</b> are rolul de a deconecta utilizatorul cu rol de <b>admin</b> de pe cont și îl redirecționează către
+          pagina acasă.
+
+          <h5 id="logout-2">4.3.2 Actualizare informațiilor</h5>
+          <ul>
+            <li>
+              Tokenul de autentificare este eliminat, prin intermediul JWT.
+            </li>
+          </ul>
+
+          <h5 id="logout-3">4.3.3 Condiții de funcționare</h5>
+          <ul>
+            <li>
+              Utilizatorul cu rol de <b>admin</b>, trebuie să fie autentificat.
+            </li>
+
+          </ul>
+        </section>
+      <section id="non-functional">
+        <h3>5. Funcționalități pentru protecție și securitate</h3>
+
+        <section id="safety">
+          <h4>5.1 Protecția datelor</h4>
+          <p>
+            Aplicația va asigura confidențialitatea datelor prin intermediul unei criptări.
+          </p>
+        </section>
+
+        <section id="security">
+          <h4>5.2 Securizarea datelor</h4>
+          <p>
+            Autorizarea utilizatorilor se face pe baza standardului JWT. Utilizatorii au acces doar la informații legate
+            de progresul in cadrul site-ului, celelalte informații fiind ascunse. Token-ul folosit pentru autorizare este
+            stocat intr-un cookie de tip HTTP-only, lucru care previne atacurile de tip XSS. Mai mult, toate datele sunt introduse
+            in baza de date prin intermediul unor <b>prepared statements</b>, care asigura prevenirea SQL Injection.
+          </p>
+        </section>
+        <section id="software-attributes">
+          <h4>5.3 Calitățile Software</h4>
+          <ul>
+            <li>Adaptabilitate</li>
+            <li>Ușurință în utilizare</li>
+            <li>Flexibilitate</li>
+          </ul>
+        </section>
+
+      </section>
+    </section>
+</article>
+</body>
+
+</html>
