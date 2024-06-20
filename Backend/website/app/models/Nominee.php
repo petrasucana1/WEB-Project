@@ -86,18 +86,17 @@ class Nominee extends DB{
             $stmt->bindParam(':award', $award, PDO::PARAM_STR);
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
-            
-            // Check if any rows were affected
+
             if ($stmt->rowCount() > 0) {
-                return true; // Nominee updated successfully
+                return true; 
             } else {
-                return false; // Nominee not found
+                return false; 
             }
         } catch (PDOException $e) {
             echo "Error editing nominee: " . $e->getMessage();
             return false;
         }
-    }//adaugare update doar pt un camp
+    }
 
     function deleteNominee($id) {
         try {
@@ -107,12 +106,12 @@ class Nominee extends DB{
             $stmt->execute();
 
             if($stmt->rowCount() > 0) {
-                return true; //Nominee deleted succesfully
+                return true; 
             } else {
-                return false; //Nominee not found
+                return false;
             }
         } catch (PDOException $e) {
-            echo "Error deleting user: " . $e->getMessage();
+            echo "Error deleting nominee: " . $e->getMessage();
             return false;
         }
     }

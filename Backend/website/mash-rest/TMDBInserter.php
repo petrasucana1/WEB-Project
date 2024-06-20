@@ -13,10 +13,8 @@ class TMDBInserter extends DB{
             $bearer_token="eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjNjYxMTkxNzA5NDBjMGVlNjczOTJhMjk5ZDA0Mzg3MyIsInN1YiI6IjY2NDhkMjZmZWE4ZTg1ODU2ZmYyNDJkYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.-qGbUifCD2OBR3K4HM_gWzsCvflw6Er559SgwL7KoYc";
             $url = "https://api.themoviedb.org/3/person/popular?page=" . $this->page;
             
-            // Initialize cURL session
             $curl = curl_init();
 
-            // Set cURL options
             curl_setopt($curl, CURLOPT_URL, $url);
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($curl, CURLOPT_HTTPHEADER, array(
@@ -41,10 +39,8 @@ class TMDBInserter extends DB{
             $bearer_token="eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjNjYxMTkxNzA5NDBjMGVlNjczOTJhMjk5ZDA0Mzg3MyIsInN1YiI6IjY2NDhkMjZmZWE4ZTg1ODU2ZmYyNDJkYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.-qGbUifCD2OBR3K4HM_gWzsCvflw6Er559SgwL7KoYc";
             $url = "https://api.themoviedb.org/3/person/" . $actor_id . "/movie_credits";
             
-            // Initialize cURL session
             $curl = curl_init();
 
-            // Set cURL options
             curl_setopt($curl, CURLOPT_URL, $url);
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($curl, CURLOPT_HTTPHEADER, array(
@@ -71,10 +67,8 @@ class TMDBInserter extends DB{
             $bearer_token="eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjNjYxMTkxNzA5NDBjMGVlNjczOTJhMjk5ZDA0Mzg3MyIsInN1YiI6IjY2NDhkMjZmZWE4ZTg1ODU2ZmYyNDJkYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.-qGbUifCD2OBR3K4HM_gWzsCvflw6Er559SgwL7KoYc";
             $url = "https://api.themoviedb.org/3/person/" . $actor_id;
             
-            // Initialize cURL session
             $curl = curl_init();
 
-            // Set cURL options
             curl_setopt($curl, CURLOPT_URL, $url);
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($curl, CURLOPT_HTTPHEADER, array(
@@ -213,14 +207,14 @@ class TMDBInserter extends DB{
 
     }
 
-        // Obținerea datelor de la TMDB
-        for($i=1;$i<=500;$i++){
-            $inserter = new TMDBInserter($i);
-            $data=$inserter->fetch_tmdb_data();
-            $inserter->insert_data($data);
-            
-        }
+    // Obținerea datelor de la TMDB
+    for($i=1;$i<=500;$i++){
+        $inserter = new TMDBInserter($i);
+        $data=$inserter->fetch_tmdb_data();
+        $inserter->insert_data($data);
+        
+    }
 
 
-        echo "Data inserted successfully!";
+    echo "Data inserted successfully!";
 ?>

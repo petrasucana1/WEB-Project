@@ -1,33 +1,26 @@
 <?php
-
-// Define base path constant
 define('BASE_PATH', dirname(__DIR__)."/website");
 
-// Load configuration settings if any
 require_once(BASE_PATH . '/app/config/config.php');
 
-// Autoload classes using a simple autoloader
 spl_autoload_register(function ($class) {
-    // Define an array of directories to search for class files
     $directories = [
+        BASE_PATH . '/app/',
         BASE_PATH . '/app/controllers/',
         BASE_PATH . '/app/models/',
-        //BASE_PATH . '/mash-rest/',
         BASE_PATH . '/views/',
         BASE_PATH . '/views/styles',
         BASE_PATH . '/views/photos',
-       // BASE_PATH . '/views/html',
+        BASE_PATH . '/views/components',
         BASE_PATH . '/public/',
-        BASE_PATH . '/app/',
-        // Add more directories as needed
+       //BASE_PATH . '/mash-rest/'
     ];
 
-    // Loop through each directory and attempt to locate the class file
     foreach ($directories as $directory) {
         $file = $directory . str_replace('\\', '/', $class) . '.php';
         if (file_exists($file)) {
             require_once $file;
-            return; // Stop searching once the class file is found
+            return; 
         }
     }
 });

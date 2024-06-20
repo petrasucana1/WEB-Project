@@ -48,6 +48,29 @@ class Movie extends DB{
         }
     }
 
+    function editMovie($id, $actor_id, $title, $release_date, $vote_average, $poster_path) {
+        try {
+            $sql = "UPDATE movies SET `actor_id` = :actor_id, `title` = :title, `release_date` = :release_date, `vote_average` = :vote_average, `poster_path` = :poster_path WHERE id = :id";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':actor_id', $actor_id, PDO::PARAM_INT);
+            $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+            $stmt->bindParam(':release_date', $release_date, PDO::PARAM_STR);
+            $stmt->bindParam(':vote_average', $vote_average, PDO::PARAM_INT);
+            $stmt->bindParam(':poster_path', $poster_path, PDO::PARAM_STR);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+            
+            if ($stmt->rowCount() > 0) {
+                return true; 
+            } else {
+                return false; 
+            }
+        } catch (PDOException $e) {
+            echo "Error editing movie: " . $e->getMessage();
+            return false;
+        }
+    }
+
     function deleteMovie($id) {
         try {
             $sql = "DELETE FROM movies WHERE id = :id";

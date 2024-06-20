@@ -47,6 +47,27 @@ class News extends DB{
         }
     }
 
+    function editNews($id, $title, $date, $link) {
+        try {
+            $sql = "UPDATE news SET `Title` = :title, `Date` = :ddate, 'Link' = :link WHERE id = :id";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+            $stmt->bindParam(':ddate', $date, PDO::PARAM_STR);
+            $stmt->bindParam(':link', $link, PDO::PARAM_STR);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+            
+            if ($stmt->rowCount() > 0) {
+                return true; 
+            } else {
+                return false; 
+            }
+        } catch (PDOException $e) {
+            echo "Error editing news: " . $e->getMessage();
+            return false;
+        }
+    }
+
     function deleteNews($id) {
         try {
             $sql = "DELETE FROM news WHERE id = :id";

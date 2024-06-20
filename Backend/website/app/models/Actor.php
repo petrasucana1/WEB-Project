@@ -103,6 +103,32 @@ class Actor extends DB{
         }
     }
 
+    function editActor($id, $name, $gender, $popularity, $profile_path, $known_for_departament, $biography, $place_of_birth, $birthday) {
+        try {
+            $sql = "UPDATE actors SET `name` = :nname, `gender` = :gender, `popularity` = :popularity, `profile_path` = :profile_path, `known_for_departament` = :known_for_departament, `biography` = :biography, `place_of_birth` = :place_of_birth, 'birthday' =:birthday WHERE id = :id";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':nname', $name, PDO::PARAM_STR);
+            $stmt->bindParam(':gender', $gender, PDO::PARAM_STR);
+            $stmt->bindParam(':popularity', $popularity, PDO::PARAM_INT);
+            $stmt->bindParam(':profile_path', $profile_path, PDO::PARAM_STR);
+            $stmt->bindParam(':known_for_departament', $known_for_departament, PDO::PARAM_STR);
+            $stmt->bindParam(':biography', $biography, PDO::PARAM_STR);
+            $stmt->bindParam(':place_of_birth', $place_of_birth, PDO::PARAM_STR);
+            $stmt->bindParam(':birthday', $birthday, PDO::PARAM_STR);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+            
+            if ($stmt->rowCount() > 0) {
+                return true; 
+            } else {
+                return false; 
+            }
+        } catch (PDOException $e) {
+            echo "Error editing actor: " . $e->getMessage();
+            return false;
+        }
+    }
+
     function deleteActor($id) {
         try {
             $sql = "DELETE FROM actors WHERE id = :id";

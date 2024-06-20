@@ -1,19 +1,19 @@
 <?php
 
-class AdminsController{
-    private $adminModel;
+class NewsController{
+    private $newsModel;
 
     public function __construct(){
-        $this->adminModel= new Admin();
+        $this->newsModel= new News();
     }
 
-    public function getAdmins(){
+    public function getNews(){
         http_response_code(200);
-        echo json_encode($this->adminModel->getAdmins());
+        echo json_encode($this->newsModel->getAllNews());
     }
 
 
-    public function createAdmin(){
+    public function createNews(){
         $json_data = file_get_contents('php://input');
         $data = json_decode($json_data, true);
     
@@ -22,7 +22,7 @@ class AdminsController{
             echo json_encode(['error' => 'Invalid JSON data']);
             return;
         }
-        $required_fields = ['Email', 'Password'];
+        $required_fields = ['Title', 'Date', 'Link'];
 
         foreach ($required_fields as $field) {
             if (!array_key_exists($field, $data)) {
@@ -32,14 +32,14 @@ class AdminsController{
             }
         }
 
-        $newAdminId = $this->adminModel->addAdmin($data);
+        $newNewsId = $this->newsModel->addNews($data);
     
         http_response_code(201);
-        header('Location: http://' .$_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . $newAdminId);
-        echo json_encode(['message' => 'Admin created successfully']);
+        header('Location: http://' .$_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . $newNewsId);
+        echo json_encode(['message' => 'News created successfully']);
     }
 
-    public function updateAdmin($id){
+    public function updateNews($id){
           $json_data = file_get_contents('php://input');
           $data = json_decode($json_data, true);
 
@@ -49,7 +49,7 @@ class AdminsController{
               return;
           }
 
-          $required_fields = ['Email', 'Password'];
+          $required_fields = ['Title', 'Date', 'Link'];
             
           foreach ($required_fields as $field) {
                 if (!array_key_exists($field, $data)) {
@@ -59,26 +59,26 @@ class AdminsController{
                 }
           }  
 
-        $result = $this->adminModel->editAdmin($data['Id'],$data['Email'],$data['Password']);
+        $result = $this->newsModel->editNews($data['Id'],$data['Title'],$data['Date'], $data['Link']);
 
         if($result) {
             http_response_code(200);
-            echo json_encode(['message' => 'Admin updated succesfully']);
+            echo json_encode(['message' => 'News updated succesfully']);
         } else {
             http_response_code(404);
-            echo json_encode(['error' => 'Admin not found']);
+            echo json_encode(['error' => 'News not found']);
         }
     }
 
-    public function deleteAdmin($id){
-        $success= $this->adminModel->deleteAdmin($id);
+    public function deleteNews($id){
+        $success= $this->newsModel->deleteNews($id);
 
         if ($success) {
             http_response_code(200);
-            echo json_encode(['message' => 'Admin deleted successfully']);
+            echo json_encode(['message' => 'News deleted successfully']);
         } else {
             http_response_code(404);
-            echo json_encode(['error' => 'Admin not found']);
+            echo json_encode(['error' => 'News not found']);
         }
     }
 }

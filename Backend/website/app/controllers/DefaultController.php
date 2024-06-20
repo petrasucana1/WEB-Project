@@ -11,7 +11,6 @@ class DefaultController
         echo "Welcome to test controller";
     }
 
-    // Add more methods as needed for handling different routes/actions
 }
 
 ?>
