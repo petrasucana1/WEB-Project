@@ -25,11 +25,9 @@ $categories = [
     "MALE ACTOR IN A TELEVISION MOVIE OR LIMITED SERIES" => []
 ];
 
-// Populăm categorii cu nominalizările din baza de date sau API
 foreach ($nominees as $nominee) {
     $categories[$nominee['Category']][] = $nominee;
 }
-// Generăm HTML pentru fiecare categorie
 foreach ($categories as $category => $nomineesInCategory):
     if (count($nomineesInCategory) > 0): ?>
         <div class="nominee">
@@ -59,7 +57,6 @@ foreach ($categories as $category => $nomineesInCategory):
             </div>
             <div class="text">
                 <?php
-                // Găsim câștigătorul și îl afișăm în primul rând
                 foreach ($nomineesInCategory as $nominee):
                     if ($nominee['Award'] === 'YES'):
                         ?>
@@ -74,14 +71,12 @@ foreach ($categories as $category => $nomineesInCategory):
                         </div>
                         <hr>
                         <?php
-                        break; // Întrerupem bucla după ce am găsit câștigătorul
+                        break; 
                     endif;
                 endforeach;
-
-                // Afișăm restul nominalizărilor non-câștigătoare
-                $nonWinnersCount = 0; // Numărăm câți nominalizați non-câștigători am afișat
+                $nonWinnersCount = 0;
                 foreach ($nomineesInCategory as $nominee):
-                    if ($nominee['Award'] !== 'YES' && $nonWinnersCount < 4): // Afisăm doar non-câștigătorii și maxim 4
+                    if ($nominee['Award'] !== 'YES' && $nonWinnersCount < 4): 
                         ?>
                         <div class="actor">
                             <?php

@@ -1,4 +1,4 @@
-/*GENERAL*/
+
 h1 {
   font-size: 3vw;
   color: goldenrod;
@@ -27,7 +27,6 @@ body {
   background-repeat: no-repeat;
 }
 
-/*SEARCH BAR*/
 .search-container {
   display: flex;
   justify-content: center;
@@ -82,7 +81,6 @@ body {
   }
 }
 
-/*RESULTS TABLE*/
 .results-container {
   display: flex;
   justify-content: center;
@@ -96,9 +94,9 @@ body {
   margin: 20px 0;
   font-size: 18px;
   text-align: left;
-  background-color: #ffffff; /* Background color for the table */
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
-  border: 2px solid goldenrod; /* Border for the table */
+  background-color: #ffffff; 
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+  border: 2px solid goldenrod; 
 }
 
 .results-table th, .results-table td {

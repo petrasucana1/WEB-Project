@@ -11,12 +11,10 @@ function handleAjaxRequest() {
     exit;
 }
 
-// Check if this is an AJAX request
 if (isset($_GET['offset']) && isset($_GET['limit'])) {
     handleAjaxRequest();
 }
 
-// Initial page load
 include ("components/navbar.html");
 
 $newsObj = new News();
@@ -56,13 +54,13 @@ $initialNewsList = $newsObj->getNewsWithPagination(0, 20);
     </section>
     <script>
         document.getElementById('more-news-button').addEventListener('click', function() {
-            let offset = document.querySelectorAll('#news-table tr').length - 1; // Minus 1 for the header row
+            let offset = document.querySelectorAll('#news-table tr').length - 1; 
             let limit = 10;
-            console.log(`Fetching more news with offset=${offset} and limit=${limit}`); // Debugging line
+            console.log(`Fetching more news with offset=${offset} and limit=${limit}`); 
             fetch(`news.php?offset=${offset}&limit=${limit}`)
                 .then(response => response.json())
                 .then(data => {
-                    console.log('Received data:', data); // Debugging line
+                    console.log('Received data:', data); 
                     if (data.length > 0) {
                         const newsTable = document.getElementById('news-table');
                         data.forEach(news => {
@@ -78,7 +76,7 @@ $initialNewsList = $newsObj->getNewsWithPagination(0, 20);
                         document.getElementById('more-news-button').innerText = 'No more news';
                     }
                 })
-                .catch(error => console.error('Error fetching more news:', error)); // Debugging line
+                .catch(error => console.error('Error fetching more news:', error)); 
         });
     </script>
 </body>

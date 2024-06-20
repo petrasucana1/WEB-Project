@@ -18,7 +18,6 @@
             <div class="drop_down_list">
                 <select name="year" id="edition">
                     <?php
-                    // Generăm opțiunile pentru dropdown-ul anului
                     for ($year = 2023; $year >= 1995; $year--) {
                         echo '<option value="' . $year . '" >' ;
                         echo $year . ' Screen Actors Guild Awards</option>';
@@ -62,7 +61,6 @@
         loadNominees(selected_year);
     });
 
-    // La încărcarea paginii, încarcăm conținutul nominalizărilor pentru anul selectat inițial
     window.onload = function() {
         let selected_year = selectMenu.value;
         loadNominees(selected_year);

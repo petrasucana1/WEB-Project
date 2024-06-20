@@ -88,14 +88,14 @@ include ("components/footer.html");
 
         scrollLeftButton.addEventListener("click", function() {
             scrollOuter.scrollBy({
-                left: -300, // Adjust this value as per your image width
+                left: -300, 
                 behavior: "smooth"
             });
         });
 
         scrollRightButton.addEventListener("click", function() {
             scrollOuter.scrollBy({
-                left: 300, // Adjust this value as per your image width
+                left: 300, 
                 behavior: "smooth"
             });
         });

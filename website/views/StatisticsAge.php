@@ -3,9 +3,7 @@ include ("components/navbar.html");
 
 include_once '../app/models/Actor.php';
 $actor = new Actor();
-$actors = $actor->getAllActors(); // Presupunând că această metodă returnează un array de actori cu data nașterii
-
-// Inițializăm conteoare pentru fiecare categorie
+$actors = $actor->getAllActors(); 
 $genZCount = 0;
 $millennialsCount = 0;
 $genXCount = 0;
@@ -15,7 +13,6 @@ $postWarCount = 0;
 $ww2Count = 0;
 $after2012Count = 0;
 
-// Parcurgem fiecare actor și adăugăm la categoria corespunzătoare
 foreach ($actors as $actor) {
     $birthYear = (int)date('Y', strtotime($actor['birthday']));
     
@@ -38,7 +35,6 @@ foreach ($actors as $actor) {
     }
 }
 
-// Calculăm procentajul pentru fiecare categorie
 $totalActors = count($actors);
 $genZPercentage = round(($genZCount / $totalActors) * 100, 2);
 $millennialsPercentage = round(($millennialsCount / $totalActors) * 100, 2);
@@ -57,16 +53,16 @@ $after2012Percentage = round(($after2012Count / $totalActors) * 100, 2);
     <title>Distribuție în generații</title>
     <script src="https://www.gstatic.com/charts/loader.js"></script>
     <style>
-        /* Stiluri CSS pentru a face graficul responsive */
+      
         #chartContainer {
             width: 100%;
-            max-width: 800px; /* Lățime maximă a containerului */
-            height: 600px; /* Înălțime fixă a containerului */
-            margin: auto; /* Centrare pe pagină */
+            max-width: 800px; 
+            height: 600px;
+            margin: auto;
         }
         .export-buttons {
             text-align: center;
-            margin-top: 20px; /* Spațiu de 20px sus de buton */
+            margin-top: 20px; 
             margin-bottom: 30px;
         }
         .export-buttons button {
@@ -95,7 +91,6 @@ $after2012Percentage = round(($after2012Count / $totalActors) * 100, 2);
         google.charts.setOnLoadCallback(drawChart);
 
         function drawChart() {
-            // Set Data
             const data = google.visualization.arrayToDataTable([
                 ['Categorie', 'Procent'],
                 ['Gen Z (1997-2012)', <?php echo $genZPercentage; ?>],
@@ -108,7 +103,6 @@ $after2012Percentage = round(($after2012Count / $totalActors) * 100, 2);
                 ['După 2012', <?php echo $after2012Percentage; ?>]
             ]);
 
-            // Set Options
             const options = {
                 title: 'Distribuție în generații ',
                 is3D: true,
@@ -123,16 +117,12 @@ $after2012Percentage = round(($after2012Count / $totalActors) * 100, 2);
                     7: { color: '#6E3A3A' }  // După 2012
                 }
             };
-
-            // Draw
             const chart = new google.visualization.PieChart(document.getElementById('chartContainer'));
             chart.draw(data, options);
         }
 
-        // Redimensionare grafic la redimensionarea ferestrei
         window.addEventListener('resize', drawChart);
 
-        // Funcție pentru exportul în format CSV
         function exportToCSV() {
             const data = google.visualization.arrayToDataTable([
                 ['Categorie', 'Procent'],
@@ -154,7 +144,7 @@ $after2012Percentage = round(($after2012Count / $totalActors) * 100, 2);
             const file = new Blob([content], { type: contentType });
             element.href = URL.createObjectURL(file);
             element.download = filename;
-            document.body.appendChild(element); // Required for Firefox
+            document.body.appendChild(element); 
             element.click();
             document.body.removeChild(element);
         }

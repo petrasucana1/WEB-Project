@@ -42,13 +42,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             padding: 8px;
             border: 1px solid #f5c6cb;
             margin-top: 10px;
-            /* Stilizare adițională */
-            max-width: 50%; /* Lățime maximă a casetei de eroare */
-            text-align: center; /* Afișare text centrat */
-            position: fixed; /* Poziționare fixă pentru a rămâne vizibilă pe ecran */
-            left: 50%; /* Centrare pe orizontală */
-            transform: translateX(-50%); /* Ajustare pentru centrat */
-            z-index: 1000; /* Asigură că este afișată deasupra altor elemente */
+            max-width: 50%; 
+            text-align: center; 
+            position: fixed;
+            left: 50%; 
+            transform: translateX(-50%);
+            z-index: 1000; 
         }
     </style>
 </head>
@@ -66,7 +65,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </form>
 </div>
-<!-- Container pentru mesajele de eroare -->
 <div class="error-message" id="error-message">
     <?php foreach ($errors as $error): ?>
         <p><?php echo $error; ?></p>

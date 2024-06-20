@@ -2,16 +2,13 @@
 include ("components/navbar.html");
 include_once '../app/models/Actor.php';
 $actor = new Actor();
-$actors = $actor->getTop10Actors(); // Presupunând că această metodă returnează un array de actori cu numărul lor și popularitatea
-
-// Inițializăm două array-uri goale pentru a stoca etichetele (numele actorilor) și datele (popularitatea)
+$actors = $actor->getTop10Actors(); 
 $labels = [];
 $data = [];
 
-// Parcurgem fiecare actor și adăugăm numele și popularitatea lor în array-urile respective
 foreach ($actors as $top_actor) {
-    $labels[] = $top_actor['name']; // Presupunând că numele actorului este în câmpul 'nume_actor'
-    $data[] = $top_actor['popularity']; // Presupunând că popularitatea este în câmpul 'popularitate'
+    $labels[] = $top_actor['name']; 
+    $data[] = $top_actor['popularity']; 
 }
 ?>
 <!DOCTYPE html>
@@ -107,12 +104,8 @@ foreach ($actors as $top_actor) {
         });
 
         document.getElementById('downloadBarBtn').addEventListener('click', function() {
-            // Capturăm canvas-ul cu html2canvas
             html2canvas(barCtx.canvas).then(function(canvas) {
-                // Convertim canvas-ul în format WEBP
                 var webpData = canvas.toDataURL('image/webp');
-                
-                // Creăm un element de ancoră pentru a descărca imaginea
                 var link = document.createElement('a');
                 link.href = webpData;
                 link.download = 'grafic_bar.webp';
